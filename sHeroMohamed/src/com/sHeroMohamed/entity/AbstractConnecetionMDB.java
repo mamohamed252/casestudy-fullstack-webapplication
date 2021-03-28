@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public abstract class abstractEmp {
+public abstract class AbstractConnecetionMDB {
 //	private final String url = "jdbc:mariadb://localhost:3306/users";
 //	private final String user = "root";
 //	private final String password = "root";
@@ -22,13 +22,13 @@ public abstract class abstractEmp {
 //	protected Connection con = null;
 //	protected PreparedStatement ps = null;
 //	protected ResultSet rs = null;
-	public static void connect() throws SQLException {
+	public static void connect(){
 		emf = Persistence.createEntityManagerFactory(PERSISTENCEUNITNAME);
 		em = emf.createEntityManager();
 	}
 	
 	
-	public static void disconnect() throws SQLException {
+	public static void disconnect() {
 		if(em != null) {
 			em.close();
 		}

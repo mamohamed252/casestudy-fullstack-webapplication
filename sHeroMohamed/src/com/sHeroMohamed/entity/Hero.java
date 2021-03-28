@@ -1,15 +1,65 @@
 package com.sHeroMohamed.entity;
 
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+
 // many to many
+@Entity
 public class Hero {
 	
 	// properties
+	
+	@Id
+	@Column(name = "heroID", nullable = false)
 	private Integer heroID;
-	private String heroName, heroDescription, superPower, heroStatus;
-	private List<Organization> orgID;
+	
+
+	@Column(name = "heroName", nullable = false, length = 50)
+	private String heroName;
+
+	@Column(name = "heroDescription", nullable = false, length = 200)
+	private String heroDescription;
+	
+
+	@Column(name = "superPower", nullable = false, length = 50)
+	private String superPower;
+	
+
+	@Column(name = "heroStatus", nullable = false, length = 2)
+	private String heroStatus;
+	
+	@OneToMany(targetEntity = HeroOrg.class, fetch = FetchType.EAGER)
+	private List<HeroOrg> orgID;
 	
 	
+	
+	
+	public Hero() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+	public Hero(Integer heroID, String heroName, String heroDescription, String superPower, String heroStatus,
+			List<HeroOrg> orgID) {
+		super();
+		this.heroID = heroID;
+		this.heroName = heroName;
+		this.heroDescription = heroDescription;
+		this.superPower = superPower;
+		this.heroStatus = heroStatus;
+		this.orgID = orgID;
+	}
+
+
+
 	public Integer getHeroID() {
 		return heroID;
 	}

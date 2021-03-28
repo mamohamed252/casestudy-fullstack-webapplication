@@ -1,4 +1,4 @@
-package com.sHeroMohamed.dao;
+package com.sHeroMohamed.service;
 
 public class LocationDAOImpl {
 

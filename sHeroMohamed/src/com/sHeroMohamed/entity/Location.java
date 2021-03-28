@@ -1,11 +1,44 @@
 package com.sHeroMohamed.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Location {
 
 	// properties
+	
+	@Id
+	@Column(name = "locationID", nullable = false)
 	private Integer locationID;
-	private String locationName, locationDescription, street, city, state, zipcode, country, locationLatitude,
-			locationLongitude;
+
+	@Column(name = "locationName", nullable = false, length = 50)
+	private String locationName; 
+
+	@Column(name = "locationDescription", nullable = false, length = 200)
+	private String locationDescription;
+
+	@Column(name = "street", nullable = false, length = 100)
+	private String street;
+
+	@Column(name = "city", nullable = false, length = 50)
+	private String city;
+
+	@Column(name = "state", nullable = false, length = 2)
+	private String state;
+
+	@Column(name = "zipcode", nullable = false, length = 5)
+	private String zipcode;
+
+	@Column(name = "country", nullable = false, length = 80)
+	private String country;
+
+	@Column(name = "locationLatitude", nullable = false, length = 15)
+	private String locationLatitude;
+
+	@Column(name = "locationLongitude", nullable = false, length = 15)
+	private String locationLongitude;
 
 	// constructor with parameters
 
