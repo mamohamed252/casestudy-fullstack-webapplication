@@ -6,11 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 // many to many
 @Entity
+@NamedQuery(name="getHeroByName", query="SELECT h FROM Hero h WHERE h.heroName= :heroName")//JPQL
 public class Hero {
 	
 	// properties

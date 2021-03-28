@@ -23,7 +23,8 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			em.getTransaction().commit();
 			return true;
 		} catch (Exception e) {
-		return false;
+			e.printStackTrace();
+			return false;
 		} finally {
 			disconnect();
 		}
@@ -71,11 +72,13 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			connect();
 			em.getTransaction().begin();
 			Hero foundHero = em.find(Hero.class, heroID);
-			foundHero.setHeroName(hero.getHeroName());
+			foundHero.setHeroID(hero.getHeroID());
 			foundHero.setHeroDescription(hero.getHeroDescription());
+			foundHero.setHeroName(hero.getHeroName());
 			foundHero.setHeroStatus(hero.getHeroStatus());
 			foundHero.setSuperPower(hero.getSuperPower());
 			em.persist(foundHero);
+			em.getTransaction().commit();
 			return true;
 			
 		} catch (Exception e) {
@@ -101,6 +104,24 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			disconnect();
 		}
 
+	}
+
+	@Override
+	public List<Hero> getAllHeroesByNameQuery(String Name) {
+		try {
+			connect();
+			List<Hero> allHeroes = new ArrayList<Hero>();
+			Query query = em.createNamedQuery("getHeroByName");
+			query.setParameter("heroName", Name);
+			allHeroes = query.getResultList();
+			return allHeroes;
+
+		} catch (Exception e) {
+			System.out.println("no heroes");
+			return null;
+		} finally {
+			disconnect();
+		}
 	}
 
 }

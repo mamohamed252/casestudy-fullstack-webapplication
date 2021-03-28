@@ -14,5 +14,5 @@ public interface HeroDAO {
 	public List<Hero> getAllHeroes();
 	public boolean updateHero(int heroID, Hero hero);
 	public boolean deleteHeroById(int heroID);
-
+	public List<Hero>getAllHeroesByNameQuery(String Name);
 }
