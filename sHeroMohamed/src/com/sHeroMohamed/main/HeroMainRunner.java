@@ -1,23 +1,31 @@
 package com.sHeroMohamed.main;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import com.sHeroMohamed.entity.Finding;
 import com.sHeroMohamed.entity.Hero;
+import com.sHeroMohamed.service.FindingDAOImpl;
 import com.sHeroMohamed.service.HeroDAOImpl;
 
 public class HeroMainRunner {
 
 	static HeroDAOImpl heroDaoService = new HeroDAOImpl();
+	static FindingDAOImpl findingDaoService = new FindingDAOImpl();
 	List<Hero> list = new ArrayList<Hero>();
 	static Hero hero = new Hero();
+	static Finding finding = new Finding();
 	static Scanner reader = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
 		int option = 0;
-		while (option != 7) {
+		while (option != 11) {
 			menu();
 			System.out.println("select menu:");
 			option = reader.nextInt();
@@ -40,11 +48,58 @@ public class HeroMainRunner {
 				deleteHeroById();
 				break;
 			case 6:
-				 getHeroByName();
+				getHeroByName();
 				break;
 			case 7:
+				addFinding();
+				break;
+			case 8:
+				showFindingByID();
+				break;
+			case 9:
+				// editFinding();
+				break;
+			case 10:
+				// deleteFinding();
+				break;
+			case 11:
 				break;
 			}
+		}
+
+	}
+
+	private static void showFindingByID() {
+		System.out.println("Enter Finding ID: ");
+		int id = reader.nextInt();
+		Finding findingDaoS = findingDaoService.getFindingByID(id);
+		System.out.printf("%-10s %-45s %-10s %-10s\n", "findingID", "findingDate", "heroID", "locationID");
+		System.out.printf("%-10d %-45tc %-10d %-10d\n",findingDaoS.getFindingID(), findingDaoS.getFindingDate(), findingDaoS.getHeroID(), findingDaoS.getLocationID());
+		
+	}
+
+	private static void addFinding() throws ParseException {
+		reader.nextLine();
+		System.out.println("Enter ID:");
+		finding.setFindingID(reader.nextInt());
+		reader.nextLine();
+		System.out.println("Enter Date: dd-MM-yyyy");
+		Scanner reader = new Scanner(System.in);
+	    String date = reader.nextLine();
+	    Date date1 =new SimpleDateFormat("dd-MM-yyyy").parse(date);
+		
+		finding.setFindingDate(date1);
+		
+		System.out.println("Enter Hero ID:");
+		finding.setHeroID(reader.nextInt());
+		
+		System.out.println("Enter Location ID:");
+		finding.setLocationID(reader.nextInt());
+		
+		if (findingDaoService.addFinding(finding)) {
+			System.out.println("Added Finding");
+		} else {
+			System.out.println("No finding added");
 		}
 
 	}
@@ -54,21 +109,21 @@ public class HeroMainRunner {
 		reader.nextLine();
 		System.out.println("Enter name:");
 		String name = reader.nextLine();
-		heroDaoService.getAllHeroesByNameQuery(name)
-		.stream()
-		.forEach(heroDaoS -> System.out.printf("%-10d %-30s %-10s %-10s %-10s\n", heroDaoS.getHeroID(), heroDaoS.getHeroDescription(),
-				heroDaoS.getHeroName(), heroDaoS.getHeroStatus(), heroDaoS.getSuperPower()));
+		heroDaoService.getAllHeroesByNameQuery(name).stream()
+				.forEach(heroDaoS -> System.out.printf("%-10d %-30s %-10s %-10s %-10s\n", heroDaoS.getHeroID(),
+						heroDaoS.getHeroDescription(), heroDaoS.getHeroName(), heroDaoS.getHeroStatus(),
+						heroDaoS.getSuperPower()));
 	}
 
 	private static void deleteHeroById() {
 		System.out.println("Enter ID: ");
 		int id = reader.nextInt();
 		if (heroDaoService.deleteHeroById(id)) {
-			System.out.println("ID:"+ id + " Hero Deleted");
-		}else {
+			System.out.println("ID:" + id + " Hero Deleted");
+		} else {
 			System.out.println("try again");
 		}
-		
+
 	}
 
 	private static void updateHero() {
@@ -106,7 +161,7 @@ public class HeroMainRunner {
 	}
 
 	private static void getHeroByID() {
-		System.out.println("Enter ID: ");
+		System.out.println("Enter Hero ID: ");
 		int id = reader.nextInt();
 		Hero heroDaoS = heroDaoService.getHeroByID(id);
 		System.out.printf("%-10s %-30s %-10s %-10s %-10s\n", "heroID", "heroDescription", "heroName", "heroStatus",
@@ -145,7 +200,11 @@ public class HeroMainRunner {
 		System.out.println("4. Update Hero");
 		System.out.println("5. Remove Hero");
 		System.out.println("6. Show By Name");
-		System.out.println("7. Quit");
+		System.out.println("7. Add a finding");
+		System.out.println("8. Show finding by ID");
+		System.out.println("9. Edit a finding");
+		System.out.println("10. Delete Finding");
+		System.out.println("11. Quit");
 	}
 
 }
