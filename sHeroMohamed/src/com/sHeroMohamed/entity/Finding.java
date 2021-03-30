@@ -4,12 +4,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
 public class Finding {
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "findingID", nullable = false)
 	private Integer findingID;
 	
@@ -28,9 +32,8 @@ public class Finding {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Finding(Integer findingID, Date findingDate, Integer heroID, Integer locationID) {
+	public Finding(Date findingDate, Integer heroID, Integer locationID) {
 		super();
-		this.findingID = findingID;
 		this.findingDate = findingDate;
 		this.heroID = heroID;
 		this.locationID = locationID;

@@ -11,6 +11,6 @@ public interface FindingDAO {
 	public Finding getFindingByID(int findingID);
 	public List<Finding> getAllFinding();
 	public boolean updateFinding(int findingID, Finding finding);
-	public boolean deleteHeroById(int findingID);
-	public List<Finding>getAllFindingByNameQuery(String Name);
+	public boolean deleteFindingById(int findingID);
+	
 }

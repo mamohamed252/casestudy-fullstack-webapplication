@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-auto">
       <div class="text-center">
-        <img src='img/addHeroV.jpeg' class="featurette-image img-fluid mx-auto" alt="resonsive image" width="650px"
+        <img src='/sHeroMohamed/resources/img/addHeroV.jpeg' class="featurette-image img-fluid mx-auto" alt="resonsive image" width="650px"
           height="500px">
       </div>
     </div>

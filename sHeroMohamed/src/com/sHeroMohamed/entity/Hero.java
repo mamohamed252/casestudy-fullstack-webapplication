@@ -5,7 +5,10 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
@@ -18,6 +21,7 @@ public class Hero {
 	// properties
 	
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "heroID", nullable = false)
 	private Integer heroID;
 	
@@ -33,10 +37,10 @@ public class Hero {
 	private String superPower;
 	
 
-	@Column(name = "heroStatus", nullable = false, length = 2)
+	@Column(name = "heroStatus", nullable = false, length = 10)
 	private String heroStatus;
 	
-	@OneToMany(targetEntity = HeroOrg.class, fetch = FetchType.EAGER)
+	@ManyToMany(targetEntity = HeroOrg.class, fetch = FetchType.EAGER)
 	private List<HeroOrg> orgID;
 	
 	
@@ -49,10 +53,10 @@ public class Hero {
 
 	
 
-	public Hero(Integer heroID, String heroName, String heroDescription, String superPower, String heroStatus,
+	public Hero(String heroName, String heroDescription, String superPower, String heroStatus,
 			List<HeroOrg> orgID) {
 		super();
-		this.heroID = heroID;
+	
 		this.heroName = heroName;
 		this.heroDescription = heroDescription;
 		this.superPower = superPower;

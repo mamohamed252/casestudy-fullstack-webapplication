@@ -10,9 +10,7 @@ import com.sHeroMohamed.dao.HeroDAO;
 import com.sHeroMohamed.entity.AbstractConnecetionMDB;
 import com.sHeroMohamed.entity.Hero;
 
-
-
-public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
+public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO {
 
 	@Override
 	public boolean addHero(Hero hero) {
@@ -32,7 +30,7 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 
 	@Override
 	public Hero getHeroByID(int heroID) {
-		
+
 		try {
 			connect();
 			Hero hero = null;
@@ -40,15 +38,15 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			return hero;
 		} catch (Exception e) {
 			return null;
-		}finally {
+		} finally {
 			disconnect();
 		}
-		
+
 	}
 
 	@Override
 	public List<Hero> getAllHeroes() {
-		
+
 		try {
 			connect();
 			List<Hero> allHeroes = new ArrayList<Hero>();
@@ -63,7 +61,6 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			disconnect();
 		}
 
-		
 	}
 
 	@Override
@@ -72,7 +69,6 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			connect();
 			em.getTransaction().begin();
 			Hero foundHero = em.find(Hero.class, heroID);
-			foundHero.setHeroID(hero.getHeroID());
 			foundHero.setHeroDescription(hero.getHeroDescription());
 			foundHero.setHeroName(hero.getHeroName());
 			foundHero.setHeroStatus(hero.getHeroStatus());
@@ -80,17 +76,17 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			em.persist(foundHero);
 			em.getTransaction().commit();
 			return true;
-			
+
 		} catch (Exception e) {
 			return false;
-		}finally {
+		} finally {
 			disconnect();
 		}
 	}
 
 	@Override
 	public boolean deleteHeroById(int heroID) {
-		
+
 		try {
 			connect();
 			em.getTransaction().begin();
@@ -100,7 +96,7 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			return true;
 		} catch (Exception e) {
 			return false;
-		}finally {
+		} finally {
 			disconnect();
 		}
 
@@ -115,7 +111,6 @@ public class HeroDAOImpl extends AbstractConnecetionMDB implements HeroDAO{
 			query.setParameter("heroName", Name);
 			allHeroes = query.getResultList();
 			return allHeroes;
-
 		} catch (Exception e) {
 			System.out.println("no heroes");
 			return null;

@@ -2,6 +2,8 @@ package com.sHeroMohamed.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -10,6 +12,7 @@ public class Location {
 	// properties
 	
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "locationID", nullable = false)
 	private Integer locationID;
 
@@ -41,11 +44,37 @@ public class Location {
 	private String locationLongitude;
 
 	// constructor with parameters
+	public Location() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	public Location(String locationName, String locationDescription, String street, String city,
+			String state, String zipcode, String country, String locationLatitude, String locationLongitude) {
+		super();
+		this.locationName = locationName;
+		this.locationDescription = locationDescription;
+		this.street = street;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+		this.country = country;
+		this.locationLatitude = locationLatitude;
+		this.locationLongitude = locationLongitude;
+	}
+
+
+
 
 	// getters and setters
 	public Integer getLocationID() {
 		return locationID;
 	}
+
+
 
 	public void setLocationID(Integer locationID) {
 		this.locationID = locationID;
