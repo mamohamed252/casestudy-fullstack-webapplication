@@ -13,10 +13,10 @@ import com.SuperHero_Mohamed_Mohamed.service.HeroService;
 public class HeroController {
 	@Autowired
 	private HeroService heroS;
-	@RequestMapping("/") // "/" -> this is the root or home page
-	public String indexHandler() {
-		return "index"; // view file name - index.jsp
-	}
+//	@RequestMapping("/") // "/" -> this is the root or home page
+//	public String indexHandler() {
+//		return "index"; // view file name - index.jsp
+//	}
 	
 	@RequestMapping("/index") // "/" -> this is the root or home page
 	public String homeHandler() {

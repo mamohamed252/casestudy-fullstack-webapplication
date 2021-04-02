@@ -68,10 +68,10 @@
 		<div class="col-md-6">
 			<!--style="display: none -->
 			<form class="form-horizontal" role="form" id="add-new-form">
-				<h2>Add New Superhero or Villan</h2>
+				<h2>Add New Hero or Villain</h2>
 				<div class="form-group">
 					<label for="add-heroVillan-title" class="col-md-4 control-label">
-						Hero or Villan: </label>
+						Hero or Villain: </label>
 					<div class="col-md-8">
 						<input type="text" class="form-control" id="add-heroVillan-title"
 							placeholder="Name" required />
@@ -115,23 +115,28 @@
 					</div>
 				</div>
 
-				<div class="row">
-					<table id="contactTable" class="table table-hover">
-						<tr>
-							<th width="20%">Hero or Villain</th>
-							<th width="20%">Organizations</th>
-							<th width="20%">Superpower</th>
-							<th width="20%">Descriptions</th>
-							<th width="20%"><h4>
-									<a href="editHero">Edit/Delete</a></th>
-						</tr>
+				<div class="row justify-content-center">
+					<div class="col-md-auto">
+						<table id="contactTable" class="table table-hover">
+							<tr>
+								<th width="20%">Hero or Villain</th>
+								<th width="20%">Organizations</th>
+								<th width="20%">Superpower</th>
+								<th width="20%">Descriptions</th>
+								<th width="20%"><h4>
+										<a href="editHero">Edit/Delete</a></th>
+							</tr>
+					</div>
+					
 						<tbody id="addHeroRows">
 							<c:forEach var="i" begin="0" end="${heroList.size() - 1}">
 								<tr>
 									<td width="20%"><c:out
 											value="${heroList.get(i).getHeroStatus()}"></c:out></td>
-									<td width="20%">c:out
-											value="${heroList.get(i).getOrgID().get(heroList.get(i).getOrgID().size()-1)}"></c:out></td>
+									<td width="20%"><c:out
+									
+										value="20%"> Organization</c:out>
+									</td>
 									<td width="20%"><c:out
 											value="${heroList.get(i).getSuperPower()}"></c:out></td>
 									<td width="20%"><c:out

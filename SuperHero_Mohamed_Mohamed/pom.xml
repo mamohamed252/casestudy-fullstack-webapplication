@@ -57,13 +57,13 @@
 			<version>5.3.5</version>
 		</dependency>
 
-	<!-- JSTL -->
-        <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
+		<!-- JSTL -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api -->
 		<dependency>
 			<groupId>javax.servlet.jsp.jstl</groupId>
@@ -138,8 +138,8 @@
 					<artifactId>maven-war-plugin</artifactId>
 					<version>3.2.2</version>
 					<configuration>
-                    <warSourceDirectory>webapp</warSourceDirectory>
-                </configuration>
+						<warSourceDirectory>webapp</warSourceDirectory>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>

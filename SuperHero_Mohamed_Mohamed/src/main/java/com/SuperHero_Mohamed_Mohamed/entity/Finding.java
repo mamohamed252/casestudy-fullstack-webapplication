@@ -24,7 +24,7 @@ public class Finding {
 	@Column(name = "heroID", nullable = false)
 	private Integer heroID;
 	
-	@Column(name = "locationID", nullable = false, length = 50)
+	@Column(name = "locationID", nullable = false)
 	private Integer locationID;
 
 	public Finding() {

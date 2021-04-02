@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Location {
@@ -17,30 +19,48 @@ public class Location {
 	private Integer locationID;
 
 	@Column(name = "locationName", nullable = false, length = 50)
+	@NotBlank(message = "Location name must not be empty.")
+	@Size(max = 50, message= "Location name must be less than 50 characters.")
 	private String locationName; 
 
 	@Column(name = "locationDescription", nullable = false, length = 200)
+	@NotBlank(message = "Location description must not be empty.")
+	@Size(max = 200, message= "Location description must be less than 200 characters.")
 	private String locationDescription;
 
 	@Column(name = "street", nullable = false, length = 100)
+	@NotBlank(message = "Street Address must not be empty.")
+	@Size(max = 100, message= "Street Address must be less than 100 characters.")
 	private String street;
 
 	@Column(name = "city", nullable = false, length = 50)
+	@NotBlank(message = "City must not be empty.")
+	@Size(max = 50, message= "City must be less than 50 characters.")
 	private String city;
 
 	@Column(name = "state", nullable = false, length = 2)
+	@NotBlank(message = "State must not be empty.")
+	@Size(max = 2, message= "State must be less than 2 characters.")
 	private String state;
 
 	@Column(name = "zipcode", nullable = false, length = 5)
+	@NotBlank(message = "Zipcode must not be empty.")
+	@Size(max = 5, message= "Zipcode must be less than 5 characters.")
 	private String zipcode;
 
 	@Column(name = "country", nullable = false, length = 80)
+	@NotBlank(message = "Country must not be empty.")
+	@Size(max = 80, message= "Country description must be less than 80 characters.")
 	private String country;
 
 	@Column(name = "locationLatitude", nullable = false, length = 15)
+	@NotBlank(message = "Location Latitude must not be empty.")
+	@Size(max = 15, message= "Location Latitude must be less than 15 characters.")
 	private String locationLatitude;
 
 	@Column(name = "locationLongitude", nullable = false, length = 15)
+	@NotBlank(message = "Location Longitude must not be empty.")
+	@Size(max = 15, message= "Location Longitude must be less than 15 characters.")
 	private String locationLongitude;
 
 	// constructor with parameters

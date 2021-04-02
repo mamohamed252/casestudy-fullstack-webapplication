@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 
 // many to many
@@ -27,17 +29,25 @@ public class Hero {
 	
 
 	@Column(name = "heroName", nullable = false, length = 50)
+	@NotBlank(message = "Hero name must not be empty.")
+	@Size(max = 50, message= "Hero name must be less than 50 characters.")
 	private String heroName;
 
 	@Column(name = "heroDescription", nullable = false, length = 200)
+	@NotBlank(message = "Hero description must not be empty.")
+	@Size(max = 200, message= "Hero description must be less than 200 characters.")
 	private String heroDescription;
 	
 
 	@Column(name = "superPower", nullable = false, length = 50)
+	@NotBlank(message = "Superpower must not be empty.")
+	@Size(max = 50, message= "Superpower must be less than 50 characters.")
 	private String superPower;
 	
 
-	@Column(name = "heroStatus", nullable = false, length = 10)
+	@Column(name = "heroStatus", nullable = false, length = 8)
+	@NotBlank(message = "Please choose a status. Either Hero or Villain")
+	@Size(max = 7, message= "Status must be less than 8 characters.")
 	private String heroStatus;
 	
 	@ManyToMany(targetEntity = HeroOrg.class, fetch = FetchType.LAZY)

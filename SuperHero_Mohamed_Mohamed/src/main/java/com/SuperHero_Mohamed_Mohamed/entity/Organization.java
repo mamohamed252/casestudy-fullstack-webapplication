@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 @Entity
 public class Organization {
 	@Id
@@ -13,9 +15,13 @@ public class Organization {
 	private Integer orgID;
 	
 	@Column(name = "orgName", nullable = false, length = 50)
+	@NotBlank(message = "Organization name must not be empty.")
+	@Size(max = 50, message= "Organization name must be less than 50 characters.")
 	private String orgName;
 	
 	@Column(name = "orgDescription", nullable = false, length = 200)
+	@NotBlank(message = "Organization description must not be empty.")
+	@Size(max = 200, message= "Organization description must be less than 200 characters.")
 	private String orgDescription;
 	
 	@Column(name = "locationID", nullable = false)
