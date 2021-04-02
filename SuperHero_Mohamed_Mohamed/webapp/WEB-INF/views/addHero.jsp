@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,13 +47,10 @@
 						role="button" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> Select </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="spotting">Findings</a> <a
+							<a class="dropdown-item" href="finding">Findings</a> <a
 								class="dropdown-item" href="addLocation"> Add Location</a> <a
 								class="dropdown-item" href="addOrg">Add Organization</a> <a
 								class="dropdown-item" href="addHero">Add Heroes</a>
-							<!-- <div class="dropdown-divider"></div> -->
-
-
 						</div>
 				</ul>
 			</div>
@@ -113,6 +113,36 @@
 						<button type="button" id="add-create-button"
 							class="btn btn-default">Create</button>
 					</div>
+				</div>
+
+				<div class="row">
+					<table id="contactTable" class="table table-hover">
+						<tr>
+							<th width="20%">Hero or Villain</th>
+							<th width="20%">Organizations</th>
+							<th width="20%">Superpower</th>
+							<th width="20%">Descriptions</th>
+							<th width="20%"><h4>
+									<a href="editHero">Edit/Delete</a></th>
+						</tr>
+						<tbody id="addHeroRows">
+							<c:forEach var="i" begin="0" end="${heroList.size() - 1}">
+								<tr>
+									<td width="20%"><c:out
+											value="${heroList.get(i).getHeroStatus()}"></c:out></td>
+									<td width="20%">c:out
+											value="${heroList.get(i).getOrgID().get(heroList.get(i).getOrgID().size()-1)}"></c:out></td>
+									<td width="20%"><c:out
+											value="${heroList.get(i).getSuperPower()}"></c:out></td>
+									<td width="20%"><c:out
+											value="${heroList.get(i).getHeroDescription()}"></c:out></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
+
+
 				</div>
 			</form>
 		</div>

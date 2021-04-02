@@ -40,12 +40,10 @@
               Select
             </a>
            	<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="spotting">Findings</a> <a
-					class="dropdown-item" href="addLocation"> Add Location</a> <a
-					class="dropdown-item" href="addOrg">Add Organization</a> <a
-					class="dropdown-item" href="addHero">Add Heroes</a>
-				<!-- <div class="dropdown-divider"></div> -->
-
+				<a class="dropdown-item" href="finding">Findings</a> 
+				<a class="dropdown-item" href="addLocation"> Add Location</a> 
+				<a class="dropdown-item" href="addOrg">Add Organization</a> 
+				<a class="dropdown-item" href="addHero">Add Heroes</a>
 			</div>
         </ul>
       </div>
@@ -103,7 +101,7 @@
                     <th width="20%">Orginzation Name</th>
                     <th width="20%">Description</th>
                     <th width="20%">Location</th>
-                    <th width="20%"> <h4><a href="editLocation.html">Edit/Delete</a></h4></th>
+                    <th width="20%"> <h4><a href="editLocation">Edit/Delete</a></h4></th>
                 </tr>
                <tbody id="dvdRows"></tbody>
       </table>

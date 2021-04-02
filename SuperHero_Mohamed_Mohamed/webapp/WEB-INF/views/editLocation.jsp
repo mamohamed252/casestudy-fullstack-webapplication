@@ -39,13 +39,12 @@
               aria-haspopup="true" aria-expanded="false">
               Select
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="spotting.html">Findings</a>
-              <a class="dropdown-item" href="heroes.html">Heroes</a>
-              <!-- <div class="dropdown-divider"></div> -->
-              <a class="dropdown-item" href="orgs.html">Orgs</a>
-              <a class="dropdown-item" href="location.html">Location</a>
-            </div>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="finding">Findings</a> 
+				<a class="dropdown-item" href="addLocation"> Add Location</a> 
+				<a class="dropdown-item" href="addOrg">Add Organization</a> 
+				<a class="dropdown-item" href="addHero">Add Heroes</a>
+			</div>
         </ul>
       </div>
     </nav>

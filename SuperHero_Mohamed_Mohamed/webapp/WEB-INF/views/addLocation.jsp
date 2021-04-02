@@ -40,12 +40,11 @@
               Select
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="spotting">Findings</a> <a
-								class="dropdown-item" href="addLocation"> Add Location</a> <a
-								class="dropdown-item" href="addOrg">Add Organization</a> <a
-								class="dropdown-item" href="addHero">Add Heroes</a>
-							<!-- <div class="dropdown-divider"></div> -->
-						</div>
+				<a class="dropdown-item" href="finding">Findings</a> 
+				<a class="dropdown-item" href="addLocation"> Add Location</a> 
+				<a class="dropdown-item" href="addOrg">Add Organization</a> 
+				<a class="dropdown-item" href="addHero">Add Heroes</a>
+			</div>
         </ul>
       </div>
     </nav>

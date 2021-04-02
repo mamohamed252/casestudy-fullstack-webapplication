@@ -94,7 +94,7 @@ public class Finding {
 		if (findingDate == null) {
 			if (other.findingDate != null)
 				return false;
-		} else if (!findingDate.equals(other.findingDate))
+		} else if (!findingDate.toString().equals(other.findingDate.toString()))
 			return false;
 		if (findingID == null) {
 			if (other.findingID != null)
