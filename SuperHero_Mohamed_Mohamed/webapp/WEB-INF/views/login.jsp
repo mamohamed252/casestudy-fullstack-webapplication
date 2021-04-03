@@ -31,11 +31,11 @@
         <div class="col">
         </div>
         <div class="col-5" style="background-color:#d3d3d3; border-radius:25px;">
-            <h1>Login!</h1>
+            <h1>Sign In</h1>
             <form action="loginProcess" method="post" style="display:flex; flex-direction:column">
                 Username: <input type="text" name="username"><br>
                 Password: <input type="password" name="password"><br>
-                <input type="submit" name="sign in" value="Register" style="width:50%">
+                <input type="submit" name="sign in" value="Sign in" style="width:50%">
             </form>
             <a href="register"> Create an account</a>
         </div>

@@ -15,9 +15,9 @@ public class HeroService {
 	@Autowired
 	HeroRepository repository;
 
-	public boolean addHero(Hero hero) {
-		repository.save(hero);
-		return true;
+	public Hero addHero(Hero hero) {
+		return repository.save(hero);
+		
 	}
 
 	public Hero getHeroByID(int heroID) {
