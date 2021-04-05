@@ -86,7 +86,7 @@
 								name=heroDescription placeholder="Descriptions" /><br> <input
 								class="col-md-offset-2 col-md-2" type="submit" name="cancel"
 								value="Cancel" style="width: 50%"><br> <input
-								class="col-md-offset-2 col-md-2" type="submit" name="create"
+								class="col-md-offset-2 col-md-2" type="submit" name="create" 
 								value="Create" style="width: 50%">
 
 							<table id="contactTable" class="table table-hover">
@@ -101,10 +101,7 @@
 											<a href="editHero">Edit/Delete</a>
 									</th>
 								</tr>
-
 								<tbody id="addHeroRows">
-								<span>${heroList}<h1>HeroList</h1></span>
-								<span>${heroList.size() }</span>
 									<c:forEach var="i" begin="0" end="${heroList.size() - 1}">
 										<tr>
 											<td width="20%"><c:out

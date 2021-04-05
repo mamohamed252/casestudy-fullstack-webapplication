@@ -18,7 +18,7 @@ public class Location {
 	@Column(name = "locationID", nullable = false)
 	private Integer locationID;
 
-	@Column(name = "locationName", nullable = false, length = 50)
+	@Column(name = "locationName", nullable = false, length = 50 )
 	@NotBlank(message = "Location name must not be empty.")
 	@Size(max = 50, message= "Location name must be less than 50 characters.")
 	private String locationName; 

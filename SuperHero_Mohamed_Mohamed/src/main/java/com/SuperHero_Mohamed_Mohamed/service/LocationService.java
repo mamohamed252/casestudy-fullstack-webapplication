@@ -14,9 +14,9 @@ public class LocationService {
 	@Autowired
 	LocationRepository repository;
 
-	public boolean addLocation(Location location) {
-		repository.save(location);
-		return true;
+	public Location addLocation(Location location) {
+		return repository.save(location);
+		 
 	}
 
 	public Location getLocationByID(int locationID) {
@@ -32,12 +32,16 @@ public class LocationService {
 		Location foundLocation = repository.getByLocationID(locationID);
 
 		if (foundLocation != null) {
-			foundLocation.setCity(location.getCity());
-			foundLocation.setCountry(location.getCountry());
+			foundLocation.setLocationName(location.getLocationName());
 			foundLocation.setLocationDescription(location.getLocationDescription());
+			foundLocation.setStreet(location.getStreet());
+			foundLocation.setCity(location.getCity());
+			foundLocation.setState(location.getState());
+			foundLocation.setZipcode(location.getZipcode());
+			foundLocation.setCountry(location.getCountry());
 			foundLocation.setLocationLatitude(location.getLocationLatitude());
 			foundLocation.setLocationLongitude(location.getLocationLongitude());
-			foundLocation.setLocationName(location.getLocationName());
+			repository.save(foundLocation);
 			return true;
 		} else {
 			return false;

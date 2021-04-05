@@ -14,9 +14,9 @@ public class OrgService {
 	@Autowired
 	OrgRepository repository;
 
-	public boolean addOrg(Organization org) {
-		repository.save(org);
-		return true;
+	public Organization addOrg(Organization org) {
+		return repository.save(org);
+		 
 	}
 	
 	public Organization getOrgByID(int orgID) {
@@ -34,6 +34,7 @@ public class OrgService {
 		if (updateOrg != null) {
 			updateOrg.setOrgName(org.getOrgName());
 			updateOrg.setOrgDescription(org.getOrgDescription());
+			repository.save(updateOrg);
 			return true;
 		}else {
 			return false;

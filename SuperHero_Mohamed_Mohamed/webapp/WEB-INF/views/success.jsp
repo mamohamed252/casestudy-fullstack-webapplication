@@ -60,10 +60,10 @@
 	<main role="main">
 
 
-		<div class="container" style="padding-top: 5%">
+		<div class="container" style="padding-top: 15%">
 			<div class="row">
 				<div class="col"></div>
-				<div class="col-6"
+				<div class="col-md-auto"
 					style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
 					<img src="https://media.giphy.com/media/xsMJyTdf4BQKk/source.gif"

@@ -43,14 +43,11 @@ public class HeroController {
 	@RequestMapping("createHero")
 	public ModelAndView createHeroHandler(@ModelAttribute Hero createKey) {
 		ModelAndView mav = new ModelAndView("addHero");
-		System.out.println("1");
 		Hero addHero =heroS.addHero(createKey);
 		List<Hero> getAllHeroes = heroS.getAllHeroes();
 		mav.addObject("heroList", getAllHeroes);
 		mav.addObject(addHero);
-		System.out.println("2");
-		System.out.println("3");
-		mav.setViewName("addHero");
+		mav.setViewName("success");
 		return mav;
 	}
 
