@@ -1,10 +1,14 @@
 package com.SuperHero_Mohamed_Mohamed.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -63,10 +67,13 @@ public class Location {
 	@Size(max = 15, message= "Location Longitude must be less than 15 characters.")
 	private String locationLongitude;
 
+	@OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
+    private List<Organization> org;
+	
 	// constructor with parameters
 	public Location() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.locationID = 0;
 	}
 	
 	
@@ -75,6 +82,7 @@ public class Location {
 	public Location(String locationName, String locationDescription, String street, String city,
 			String state, String zipcode, String country, String locationLatitude, String locationLongitude) {
 		super();
+		this.locationID = 0;
 		this.locationName = locationName;
 		this.locationDescription = locationDescription;
 		this.street = street;

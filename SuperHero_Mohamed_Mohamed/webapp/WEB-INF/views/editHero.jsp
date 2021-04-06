@@ -71,14 +71,20 @@
 					<div class="col-6"
 						style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
-						<h1>Add New Superhero or Villain</h1>
-						<form action="createHero" method="post"
+						<h1>Edit Superhero or Villan</h1>
+						<form action="editHero" method="post"
 							style="display: flex; flex-direction: column">
-							Hero or Villain: <input type="text" class="form-control"
+							<label for="sel1">Hero/Villain ID:</label> <select
+								class="form-control" name=heroID>
+								<c:forEach var="hero" items="${heroList}">
+									<option value="${heroList.heroID}">${heroList.heroID}
+									</option>
+								</c:forEach>
+							</select><br> Hero or Villain: <input type="text" class="form-control"
 								name=heroStatus placeholder="Name" required /><br> Name: <input
 								type="text" class="form-control" name=heroName
-								placeholder="Name" required /><br> <label for="sel1">Organization ID:</label>
-							<select class="form-control" name=orgID>
+								placeholder="Name" required /><br> <label for="sel1">Organization
+								ID:</label> <select class="form-control" name=orgID>
 								<c:forEach var="organization" items="${orgListBean}">
 									<option value="${organization.orgID}">${organization.orgID}
 									</option>
@@ -91,38 +97,37 @@
 								value="Cancel" style="width: 50%"><br> <input
 								class="col-md-offset-2 col-md-2" type="submit" name="create"
 								value="Create" style="width: 50%">
-							<c:if test="${heroList.size()>0}">
-								<table id="contactTable" class="table table-hover">
-									<tr>
-										<th width="20%">Hero or Villain</th>
-										<th width="20%">Hero Name</th>
-										<th width="20%">Org ID:</th>
-										<th width="20%">Superpower</th>
-										<th width="20%">Descriptions</th>
-										<th width="20%">
-											<h4>
-												<a href="editHero">Edit/Delete</a>
-										</th>
-									</tr>
-									<tbody id="addHeroRows">
-										<c:forEach var="i" begin="0" end="${heroList.size() - 1}">
-											<tr>
-												<td width="20%"><c:out
-														value="${heroList.get(i).getHeroStatus()}"></c:out></td>
-												<td width="20%"><c:out
-														value="${heroList.get(i).getHeroName()}"></c:out></td>
-												<td width="20%">Organization</td>
-												<td width="20%"><c:out
-														value="${heroList.get(i).getHeroStatus()}"></c:out></td>
-												<td width="20%"><c:out
-														value="${heroList.get(i).getSuperPower()}"></c:out></td>
-												<td width="20%"><c:out
-														value="${heroList.get(i).getHeroDescription()}"></c:out></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</c:if>
+
+							<table id="contactTable" class="table table-hover">
+								<tr>
+									<th width="20%">Hero or Villain</th>
+									<th width="20%">Hero Name</th>
+									<th width="20%">Org ID:</th>
+									<th width="20%">Superpower</th>
+									<th width="20%">Descriptions</th>
+									<th width="20%">
+										<h4>
+											<a href="editHero">Edit/Delete</a>
+									</th>
+								</tr>
+								<tbody id="addHeroRows">
+									<c:forEach var="i" begin="0" end="${heroList.size() - 1}">
+										<tr>
+											<td width="20%"><c:out
+													value="${heroList.get(i).getHeroStatus()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${heroList.get(i).getHeroName()}"></c:out></td>
+											<td width="20%">Organization</td>
+											<td width="20%"><c:out
+													value="${heroList.get(i).getHeroStatus()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${heroList.get(i).getSuperPower()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${heroList.get(i).getHeroDescription()}"></c:out></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 						</form>
 					</div>
 					<div class="col"></div>

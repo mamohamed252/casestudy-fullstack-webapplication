@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -50,28 +52,24 @@ public class Hero {
 	@Size(max = 7, message= "Status must be less than 8 characters.")
 	private String heroStatus;
 	
-	@ManyToMany(targetEntity = HeroOrg.class, fetch = FetchType.LAZY)
-	private List<HeroOrg> orgID;
-	
-	
+	@ManyToMany
+	@JoinTable(name = "hero_org",
+			joinColumns = {@JoinColumn(name = "heroID")},
+			inverseJoinColumns = {@JoinColumn(name = "orgID")})
+	private List<Organization> organizations;
 	
 	
 	public Hero() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.heroID = 0;
 	}
 
-	
-
-	public Hero(String heroName, String heroDescription, String superPower, String heroStatus,
-			List<HeroOrg> orgID) {
+	public Hero(String heroName, String heroDescription, String superPower, String heroStatus) {
 		super();
-	
 		this.heroName = heroName;
 		this.heroDescription = heroDescription;
 		this.superPower = superPower;
 		this.heroStatus = heroStatus;
-		this.orgID = orgID;
 	}
 
 
@@ -108,6 +106,12 @@ public class Hero {
 	}
 	public void setHeroStatus(String heroStatus) {
 		this.heroStatus = heroStatus;
+	}
+	public List<Organization> getOrganizations(){
+		return this.organizations;
+	}
+	public void setOrganizations(List<Organization> organizations) {
+		this.organizations = organizations;
 	}
 
 // hashcode

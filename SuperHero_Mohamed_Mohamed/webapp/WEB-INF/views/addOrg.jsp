@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,23 +65,29 @@
 				style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
 				<h1>Add Organization</h1>
-				<form action="addOrgSubmit" method="post"
+				<form:form action="addOrgSubmit" method="post" modelAttribute="organization"
 					style="display: flex; flex-direction: column">
-					Organization Name : <input type="text" class="form-control"
-						name=orgName placeholder="Name" required /><br> Organization
-					Description : <input type="text" class="form-control"
-						name=orgDescription placeholder="Location Description" required /><br>
-					<label for="sel1">Location ID:</label> <select class="form-control"
-						name="locationID">
-						<c:forEach var="location" items="${locationListBean }">
-							<option value="${location.locationID}">${location.locationID}
-							</option>
-						</c:forEach>
-					</select><br> <input class="col-md-offset-2 col-md-2" type="submit"
-						name="cancel" value="Cancel" style="width: 50%"><br>
-					<input class="col-md-offset-2 col-md-2" type="submit" name="create"
-						value="Create" style="width: 50%">
 
+					Organization Name : 
+					<form:input type="text" class="form-control" path="orgName"
+						name="orgName" placeholder="Name" required="true" />
+						<form:errors path="orgName" />
+					<br>
+					Organization Description : 
+					<form:input type="text" class="form-control" path="orgDescription"
+						name="orgDescription" placeholder="Location Description" required="true" />
+					<br>
+					<form:select path="location">
+						<form:options name="locationNumber" items="${locationListBean}" itemValue="locationID" itemLabel="locationName"/> 
+					</form:select>
+					<br> 
+					<br> 
+					<input class="col-md-offset-2 col-md-2"
+						type="submit" name="cancel" value="Cancel" style="width: 50%" />
+					<br>
+					<input class="col-md-offset-2 col-md-2" type="submit" name="create"
+						value="Create" style="width: 50%" />
+				</form:form>
 					<table id="contactTable" class="table table-hover">
 						<tr>
 							<th width="20%">Organization ID</th>
@@ -103,12 +110,11 @@
 									<td width="20%"><c:out
 											value="${orgList.get(i).getOrgDescription()}"></c:out></td>
 									<td width="20%"><c:out
-											value="${orgList.get(i).getLocationID()}"></c:out></td>
+											value="${orgList.get(i).getLocation()}"></c:out></td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-				</form>
 			</div>
 			<div class="col"></div>
 </body>

@@ -10,40 +10,44 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
 public class Finding {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "findingID", nullable = false)
-	private Integer findingID;
-	
+	private int findingID;
+
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "findingDate", nullable = false)
 	private Date findingDate;
-	
+
 	@Column(name = "heroID", nullable = false)
-	private Integer heroID;
-	
+	private int heroID;
+
 	@Column(name = "locationID", nullable = false)
-	private Integer locationID;
+	private int locationID;
 
 	public Finding() {
 		super();
+		this.findingID = 0;
+		this.locationID = 0;
 		// TODO Auto-generated constructor stub
 	}
 
-	public Finding(Date findingDate, Integer heroID, Integer locationID) {
+	public Finding(int findingID, Date findingDate, int heroID, int locationID) {
 		super();
+		this.findingID = findingID;
 		this.findingDate = findingDate;
 		this.heroID = heroID;
 		this.locationID = locationID;
 	}
 
-	public Integer getFindingID() {
+	public int getFindingID() {
 		return findingID;
 	}
 
-	public void setFindingID(Integer findingID) {
+	public void setFindingID(int findingID) {
 		this.findingID = findingID;
 	}
 
@@ -55,19 +59,19 @@ public class Finding {
 		this.findingDate = findingDate;
 	}
 
-	public Integer getHeroID() {
+	public int getHeroID() {
 		return heroID;
 	}
 
-	public void setHeroID(Integer heroID) {
+	public void setHeroID(int heroID) {
 		this.heroID = heroID;
 	}
 
-	public Integer getLocationID() {
+	public int getLocationID() {
 		return locationID;
 	}
 
-	public void setLocationID(Integer locationID) {
+	public void setLocationID(int locationID) {
 		this.locationID = locationID;
 	}
 
@@ -76,9 +80,9 @@ public class Finding {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((findingDate == null) ? 0 : findingDate.hashCode());
-		result = prime * result + ((findingID == null) ? 0 : findingID.hashCode());
-		result = prime * result + ((heroID == null) ? 0 : heroID.hashCode());
-		result = prime * result + ((locationID == null) ? 0 : locationID.hashCode());
+		result = prime * result + findingID;
+		result = prime * result + heroID;
+		result = prime * result + locationID;
 		return result;
 	}
 
@@ -94,22 +98,13 @@ public class Finding {
 		if (findingDate == null) {
 			if (other.findingDate != null)
 				return false;
-		} else if (!findingDate.toString().equals(other.findingDate.toString()))
+		} else if (!findingDate.equals(other.findingDate))
 			return false;
-		if (findingID == null) {
-			if (other.findingID != null)
-				return false;
-		} else if (!findingID.equals(other.findingID))
+		if (findingID != other.findingID)
 			return false;
-		if (heroID == null) {
-			if (other.heroID != null)
-				return false;
-		} else if (!heroID.equals(other.heroID))
+		if (heroID != other.heroID)
 			return false;
-		if (locationID == null) {
-			if (other.locationID != null)
-				return false;
-		} else if (!locationID.equals(other.locationID))
+		if (locationID != other.locationID)
 			return false;
 		return true;
 	}
@@ -119,6 +114,5 @@ public class Finding {
 		return "Finding [findingID=" + findingID + ", findingDate=" + findingDate + ", heroID=" + heroID
 				+ ", locationID=" + locationID + "]";
 	}
-	
-	
+
 }

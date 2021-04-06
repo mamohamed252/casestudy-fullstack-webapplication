@@ -93,56 +93,57 @@
 							value="Cancel" style="width: 50%"><br> <input
 							class="col-md-offset-2 col-md-2" type="submit" name="create"
 							value="Create" style="width: 50%">
-
-						<table id="contactTable" class="table table-hover">
-							<tr>
-								<th width="20%">Location ID</th>
-								<th width="20%">Location</th>
-								<th width="20%">Description</th>
-								<th width="20%">Street</th>
-								<th width="20%">City</th>
-								<th width="20%">State</th>
-								<th width="20%">Zipcode</th>
-								<th width="20%">Country</th>
-								<th width="20%">Latitude</th>
-								<th width="20%">Longitude</th>
-								<th width="20%">
-									<h4>
-										<a href="editLocation">Edit/Delete</a>
-								</th>
-							</tr>
-
-							<tbody id="addLocationRows">
-								<c:forEach var="i" begin="0" end="${locationList.size() - 1}">
-									<tr>
-										
-										
-										<td width="20%"><c:out
-												value="${locationList.get(i).getLocationID()}"></c:out></td>
-										
-										<td width="20%"><c:out
-												value="${locationList.get(i).getLocationName()}"></c:out></td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getLocationDescription()}"></c:out>
-										</td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getStreet()}"></c:out></td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getCity()}"></c:out></td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getState()}"></c:out></td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getZipcode()}"></c:out></td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getCountry()}"></c:out></td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getLocationLatitude()}"></c:out></td>
-										<td width="20%"><c:out
-												value="${locationList.get(i).getLocationLongitude()}"></c:out></td>
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+						<c:if test="${locationList.size()>0}">
+							<table id="contactTable" class="table table-hover">
+								<tr>
+									<th width="20%">Location ID</th>
+									<th width="20%">Location</th>
+									<th width="20%">Description</th>
+									<th width="20%">Street</th>
+									<th width="20%">City</th>
+									<th width="20%">State</th>
+									<th width="20%">Zipcode</th>
+									<th width="20%">Country</th>
+									<th width="20%">Latitude</th>
+									<th width="20%">Longitude</th>
+									<th width="20%">
+										<h4>
+											<a href="editLocation">Edit/Delete</a>
+									</th>
+								</tr>
+	
+								<tbody id="addLocationRows">
+									<c:forEach var="i" begin="0" end="${locationList.size() - 1}">
+										<tr>
+											
+											
+											<td width="20%"><c:out
+													value="${locationList.get(i).getLocationID()}"></c:out></td>
+											
+											<td width="20%"><c:out
+													value="${locationList.get(i).getLocationName()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getLocationDescription()}"></c:out>
+											</td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getStreet()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getCity()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getState()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getZipcode()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getCountry()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getLocationLatitude()}"></c:out></td>
+											<td width="20%"><c:out
+													value="${locationList.get(i).getLocationLongitude()}"></c:out></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</c:if>
 					</form>
 				</div>
 				<div class="col"></div>

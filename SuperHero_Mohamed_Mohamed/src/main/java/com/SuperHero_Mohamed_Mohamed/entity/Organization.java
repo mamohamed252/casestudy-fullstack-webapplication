@@ -2,9 +2,12 @@ package com.SuperHero_Mohamed_Mohamed.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 @Entity
@@ -24,22 +27,22 @@ public class Organization {
 	@Size(max = 200, message= "Organization description must be less than 200 characters.")
 	private String orgDescription;
 	
-	@Column(name = "locationID", nullable = false)
-	private Integer locationID;
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "locationID")
+	private Location location;
 
 	public Organization() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.orgID = 0;
 	}
 
-	public Organization(Integer orgID, String orgName, String orgDescription, Integer locationID) {
+	public Organization(Integer orgID, String orgName, String orgDescription) {
 		super();
 		this.orgID = orgID;
 		this.orgName = orgName;
 		this.orgDescription = orgDescription;
-		this.locationID = locationID;
 	}
-
+	
 	public Integer getOrgID() {
 		return orgID;
 	}
@@ -64,19 +67,18 @@ public class Organization {
 		this.orgDescription = orgDescription;
 	}
 
-	public Integer getLocationID() {
-		return locationID;
+	public Location getLocation() {
+		return this.location;
 	}
-
-	public void setLocationID(Integer locationID) {
-		this.locationID = locationID;
+	
+	public void setLocation(Location location) {
+		this.location = location;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((locationID == null) ? 0 : locationID.hashCode());
 		result = prime * result + ((orgDescription == null) ? 0 : orgDescription.hashCode());
 		result = prime * result + ((orgID == null) ? 0 : orgID.hashCode());
 		result = prime * result + ((orgName == null) ? 0 : orgName.hashCode());
@@ -92,11 +94,6 @@ public class Organization {
 		if (getClass() != obj.getClass())
 			return false;
 		Organization other = (Organization) obj;
-		if (locationID == null) {
-			if (other.locationID != null)
-				return false;
-		} else if (!locationID.equals(other.locationID))
-			return false;
 		if (orgDescription == null) {
 			if (other.orgDescription != null)
 				return false;
@@ -117,8 +114,7 @@ public class Organization {
 
 	@Override
 	public String toString() {
-		return "Organization [orgID=" + orgID + ", orgName=" + orgName + ", orgDescription=" + orgDescription
-				+ ", locationID=" + locationID + "]";
+		return "Organization [orgID=" + orgID + ", orgName=" + orgName + ", orgDescription=" + orgDescription + "]";
 	}
 	
 	
