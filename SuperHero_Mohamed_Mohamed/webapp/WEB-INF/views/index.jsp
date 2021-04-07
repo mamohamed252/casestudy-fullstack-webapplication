@@ -148,7 +148,6 @@
 				aria-hidden="true"></span> <span class="sr-only">Next</span>
 			</a>
 		</div>
-
 	</main>
 </body>
 
