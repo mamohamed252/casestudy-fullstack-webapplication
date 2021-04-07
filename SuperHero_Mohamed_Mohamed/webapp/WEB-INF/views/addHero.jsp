@@ -72,21 +72,21 @@
 						style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
 						<h1>Add New Superhero or Villain</h1>
-						<form action="createHero" method="post"
+						<form action="createHero" method="get"
 							style="display: flex; flex-direction: column">
 							Hero or Villain: <input type="text" class="form-control"
-								name=heroStatus placeholder="Name" required /><br> Name: <input
-								type="text" class="form-control" name=heroName
+								name="heroStatus" placeholder="Name" required /><br> Name: <input
+								type="text" class="form-control" name="heroName"
 								placeholder="Name" required /><br> <label for="sel1">Organization ID:</label>
-							<select class="form-control" name=orgID>
+							<select class="form-control" name="orgID">
 								<c:forEach var="organization" items="${orgListBean}">
 									<option value="${organization.orgID}">${organization.orgID}
 									</option>
 								</c:forEach>
 							</select><br> Superpower: <input type="text" class="form-control"
-								name=superPower placeholder="Superpower" /><br>
+								name="superPower" placeholder="Superpower" /><br>
 							Descriptions: <input type="tel" class="form-control"
-								name=heroDescription placeholder="Descriptions" /><br> <input
+								name="heroDescription" placeholder="Descriptions" /><br> <input
 								class="col-md-offset-2 col-md-2" type="submit" name="cancel"
 								value="Cancel" style="width: 50%"><br> <input
 								class="col-md-offset-2 col-md-2" type="submit" name="create"

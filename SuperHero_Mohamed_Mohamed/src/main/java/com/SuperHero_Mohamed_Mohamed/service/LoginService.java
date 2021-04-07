@@ -16,16 +16,17 @@ public class LoginService {
 		return repository.save(user);
 	}
 	
+	public Login getUser(String user) {
+		return repository.getLoginByUsername(user);
+	}
+	
 	public Login validateLogin(String username, String password) {
 		Login userLogin = repository.getLoginByUsername(username);
-		if (userLogin!=null) {
-			if (userLogin.getUsername().equals(password)) {
+		if (userLogin!= null) {
+			if (userLogin.getPassword().equals(password)) {
 				return userLogin;	
 			}
 		}
 		return null;
-		
-
-		
 	}
 }

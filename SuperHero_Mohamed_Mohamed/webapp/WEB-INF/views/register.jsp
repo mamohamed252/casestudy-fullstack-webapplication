@@ -37,6 +37,7 @@
                 Username: <input type="text" name="username"><br>
                 Password: <input type="password" name="password"><br>
                 Verify Password: <input type="password" name="verifyPassword"><br>
+               	<span>${passwordMessage}</span>
                 <input type="submit" name="register" value="Register" style="width:50%">
             </form>
         </div>

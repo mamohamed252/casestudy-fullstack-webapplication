@@ -1,5 +1,7 @@
 package com.SuperHero_Mohamed_Mohamed.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,13 +23,24 @@ public class RegisterController {
 		return mav;
 	}
 
-	@RequestMapping("registerSubmit")
-	public ModelAndView registerUserHandler(@ModelAttribute Login loginKey) {
-		ModelAndView mav = new ModelAndView("register");
-		if (loginKey.getPassword().equals(loginKey.getVerifyPassword())) {
-			loginS.addUser(loginKey);
-			mav.setViewName("login");
-		}
-		return mav;
-	}
+	   @RequestMapping("registerSubmit")
+	    public ModelAndView registerUserHandler(@ModelAttribute Login user, HttpServletRequest request) {
+	        ModelAndView mav = new ModelAndView("register");
+	        if(user.getPassword().equals(user.getVerifyPassword()) && user.getPassword().length() > 4) {
+	            if(loginS.getUser(user.getUsername()) != null) {
+	                request.setAttribute("usernameMessage", "Username already taken, please use another.");
+	                request.getRequestDispatcher("/register");
+	            } else {
+	            	loginS.addUser(user);
+	                mav.setViewName("login");
+	            }
+	        } else {
+	            request.setAttribute("message", "\"Password\" field must match \"Verify Password\" field. Please try again.");
+	            if(user.getPassword().length() < 7) {
+	                request.setAttribute("passwordMessage", "\"Password\" must be greater than 6 characters.");
+	                request.getRequestDispatcher("/register");
+	            }
+	        }
+			return mav;
+	   }      
 }

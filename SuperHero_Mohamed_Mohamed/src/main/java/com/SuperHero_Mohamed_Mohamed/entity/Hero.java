@@ -1,5 +1,6 @@
 package com.SuperHero_Mohamed_Mohamed.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -51,12 +52,14 @@ public class Hero {
 	@NotBlank(message = "Please choose a status. Either Hero or Villain")
 	@Size(max = 7, message= "Status must be less than 8 characters.")
 	private String heroStatus;
+//	@Column(name = "picture", nullable = false, length= 50)
+//	private String picture;
 	
-	@ManyToMany
-	@JoinTable(name = "hero_org",
-			joinColumns = {@JoinColumn(name = "heroID")},
-			inverseJoinColumns = {@JoinColumn(name = "orgID")})
-	private List<Organization> organizations;
+	
+	@ManyToMany(targetEntity = Organization.class, fetch= FetchType.LAZY)
+	@JoinTable(name = "hero_org")
+		
+	private List<Organization> organizations = new ArrayList<>();
 	
 	
 	public Hero() {
@@ -64,57 +67,83 @@ public class Hero {
 		this.heroID = 0;
 	}
 
-	public Hero(String heroName, String heroDescription, String superPower, String heroStatus) {
+
+	public Hero(Integer heroID,
+			@NotBlank(message = "Hero name must not be empty.") @Size(max = 50, message = "Hero name must be less than 50 characters.") String heroName,
+			@NotBlank(message = "Hero description must not be empty.") @Size(max = 200, message = "Hero description must be less than 200 characters.") String heroDescription,
+			@NotBlank(message = "Superpower must not be empty.") @Size(max = 50, message = "Superpower must be less than 50 characters.") String superPower,
+			@NotBlank(message = "Please choose a status. Either Hero or Villain") @Size(max = 7, message = "Status must be less than 8 characters.") String heroStatus,
+			List<Organization> organizations) {
 		super();
+		this.heroID = heroID;
 		this.heroName = heroName;
 		this.heroDescription = heroDescription;
 		this.superPower = superPower;
 		this.heroStatus = heroStatus;
+		this.organizations = organizations;
 	}
-
 
 
 	public Integer getHeroID() {
 		return heroID;
 	}
-	
-	
-	// getters and setters
+
+
 	public void setHeroID(Integer heroID) {
 		this.heroID = heroID;
 	}
+
+
 	public String getHeroName() {
 		return heroName;
 	}
+
+
 	public void setHeroName(String heroName) {
 		this.heroName = heroName;
 	}
+
+
 	public String getHeroDescription() {
 		return heroDescription;
 	}
+
+
 	public void setHeroDescription(String heroDescription) {
 		this.heroDescription = heroDescription;
 	}
+
+
 	public String getSuperPower() {
 		return superPower;
 	}
+
+
 	public void setSuperPower(String superPower) {
 		this.superPower = superPower;
 	}
+
+
 	public String getHeroStatus() {
 		return heroStatus;
 	}
+
+
 	public void setHeroStatus(String heroStatus) {
 		this.heroStatus = heroStatus;
 	}
-	public List<Organization> getOrganizations(){
-		return this.organizations;
+
+
+	public List<Organization> getOrganizations() {
+		return organizations;
 	}
+
+
 	public void setOrganizations(List<Organization> organizations) {
 		this.organizations = organizations;
 	}
 
-// hashcode
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -123,6 +152,7 @@ public class Hero {
 		result = prime * result + ((heroID == null) ? 0 : heroID.hashCode());
 		result = prime * result + ((heroName == null) ? 0 : heroName.hashCode());
 		result = prime * result + ((heroStatus == null) ? 0 : heroStatus.hashCode());
+		result = prime * result + ((organizations == null) ? 0 : organizations.hashCode());
 		result = prime * result + ((superPower == null) ? 0 : superPower.hashCode());
 		return result;
 	}
@@ -157,6 +187,11 @@ public class Hero {
 				return false;
 		} else if (!heroStatus.equals(other.heroStatus))
 			return false;
+		if (organizations == null) {
+			if (other.organizations != null)
+				return false;
+		} else if (!organizations.equals(other.organizations))
+			return false;
 		if (superPower == null) {
 			if (other.superPower != null)
 				return false;
@@ -169,10 +204,7 @@ public class Hero {
 	@Override
 	public String toString() {
 		return "Hero [heroID=" + heroID + ", heroName=" + heroName + ", heroDescription=" + heroDescription
-				+ ", superPower=" + superPower + ", heroStatus=" + heroStatus + "]";
+				+ ", superPower=" + superPower + ", heroStatus=" + heroStatus + ", organizations=" + organizations
+				+ "]";
 	}
-	
-	
-	
-	
 }

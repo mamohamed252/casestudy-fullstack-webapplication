@@ -1,11 +1,14 @@
 package com.SuperHero_Mohamed_Mohamed.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.SuperHero_Mohamed_Mohamed.entity.Hero;
@@ -46,14 +49,19 @@ public class HeroController {
 //		return "success"; // view file name - index.jsp
 //	}
 
-	@RequestMapping("createHero")
-	public ModelAndView createHeroHandler(@ModelAttribute Hero createKey) {
+	@RequestMapping(value="createHero", method=RequestMethod.GET)
+	public ModelAndView createHeroHandler(@ModelAttribute Hero createKey, @ModelAttribute("orgID") Organization orgID) {
 		ModelAndView mav = new ModelAndView("addHero");
-		Hero addHero =heroS.addHero(createKey);
 		List<Hero> getAllHeroes = heroS.getAllHeroes();
+		Hero addHero =heroS.addHero(createKey);
+		//List<Organization> orgList = new ArrayList<Organization>();
+		//addHero.setOrganizations(orgList);
+		addHero.getOrganizations().add(orgS.getOrgByID(orgID.getOrgID()));
+		heroS.addHero(addHero);
 		mav.addObject("heroList", getAllHeroes);
 		mav.addObject(addHero);
-		return heroesHandler();
+		mav.setViewName("success");
+		return mav;
 	}
 
 }

@@ -65,7 +65,7 @@
 				style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
 				<h1>Add Organization</h1>
-				<form:form action="addOrgSubmit" method="post" modelAttribute="organization"
+				<form:form action="addOrgSubmit" method="get" modelAttribute="organization"
 					style="display: flex; flex-direction: column">
 
 					Organization Name : 
@@ -78,7 +78,7 @@
 						name="orgDescription" placeholder="Location Description" required="true" />
 					<br>
 					<form:select path="location">
-						<form:options name="locationNumber" items="${locationListBean}" itemValue="locationID" itemLabel="locationName"/> 
+						<form:options name="location" items="${locationListBean}" itemValue="locationID" itemLabel="locationName"/> 
 					</form:select>
 					<br> 
 					<br> 
@@ -101,16 +101,18 @@
 						</tr>
 						<tbody id="addLocationRows">
 							<c:forEach var="i" begin="0" end="${orgList.size() - 1}">
+								<c:set var="decr" value="${orgList.size() - i - 1}"/>
+							
 								<tr>
 
 									<td width="20%"><c:out
-											value="${orgList.get(i).getOrgID()}"></c:out></td>
+											value="${orgList.get(decr).getOrgID()}"></c:out></td>
 									<td width="20%"><c:out
-											value="${orgList.get(i).getOrgName()}"></c:out></td>
+											value="${orgList.get(decr).getOrgName()}"></c:out></td>
 									<td width="20%"><c:out
-											value="${orgList.get(i).getOrgDescription()}"></c:out></td>
+											value="${orgList.get(decr).getOrgDescription()}"></c:out></td>
 									<td width="20%"><c:out
-											value="${orgList.get(i).getLocation()}"></c:out></td>
+											value="${orgList.get(decr).getLocation().getLocationName()}"></c:out></td>
 								</tr>
 							</c:forEach>
 						</tbody>

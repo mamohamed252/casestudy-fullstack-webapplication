@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.SuperHero_Mohamed_Mohamed.entity.Organization;
 
 @Repository
-public interface OrgRepository extends JpaRepository<Organization, String>{
+public interface OrgRepository extends JpaRepository<Organization, Integer>{
 
-	public Organization getByOrgID(int orgID);
+	 Organization getByOrgID(int orgID);
 }
