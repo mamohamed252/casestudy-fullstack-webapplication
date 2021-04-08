@@ -42,9 +42,9 @@ public class Location {
 	@Size(max = 50, message= "City must be less than 50 characters.")
 	private String city;
 
-	@Column(name = "state", nullable = false, length = 2)
+	@Column(name = "state", nullable = false, length = 3)
 	@NotBlank(message = "State must not be empty.")
-	@Size(max = 2, message= "State must be less than 2 characters.")
+	@Size(max = 3, message= "State must be less than 3 characters.")
 	private String state;
 
 	@Column(name = "zipcode", nullable = false, length = 5)
@@ -60,14 +60,14 @@ public class Location {
 	@Column(name = "locationLatitude", nullable = false, length = 15)
 	@NotBlank(message = "Location Latitude must not be empty.")
 	@Size(max = 15, message= "Location Latitude must be less than 15 characters.")
-	private String locationLatitude;
+	private Double locationLatitude;
 
 	@Column(name = "locationLongitude", nullable = false, length = 15)
 	@NotBlank(message = "Location Longitude must not be empty.")
 	@Size(max = 15, message= "Location Longitude must be less than 15 characters.")
-	private String locationLongitude;
+	private Double locationLongitude;
 
-	@OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
     private List<Organization> org;
 	
 	// constructor with parameters
@@ -75,14 +75,20 @@ public class Location {
 		super();
 		this.locationID = 0;
 	}
-	
-	
-	
-	
-	public Location(String locationName, String locationDescription, String street, String city,
-			String state, String zipcode, String country, String locationLatitude, String locationLongitude) {
+
+	public Location(Integer locationID,
+			@NotBlank(message = "Location name must not be empty.") @Size(max = 50, message = "Location name must be less than 50 characters.") String locationName,
+			@NotBlank(message = "Location description must not be empty.") @Size(max = 200, message = "Location description must be less than 200 characters.") String locationDescription,
+			@NotBlank(message = "Street Address must not be empty.") @Size(max = 100, message = "Street Address must be less than 100 characters.") String street,
+			@NotBlank(message = "City must not be empty.") @Size(max = 50, message = "City must be less than 50 characters.") String city,
+			@NotBlank(message = "State must not be empty.") @Size(max = 3, message = "State must be less than 3 characters.") String state,
+			@NotBlank(message = "Zipcode must not be empty.") @Size(max = 5, message = "Zipcode must be less than 5 characters.") String zipcode,
+			@NotBlank(message = "Country must not be empty.") @Size(max = 80, message = "Country description must be less than 80 characters.") String country,
+			@NotBlank(message = "Location Latitude must not be empty.") @Size(max = 15, message = "Location Latitude must be less than 15 characters.") Double locationLatitude,
+			@NotBlank(message = "Location Longitude must not be empty.") @Size(max = 15, message = "Location Longitude must be less than 15 characters.") Double locationLongitude,
+			List<Organization> org) {
 		super();
-		this.locationID = 0;
+		this.locationID = locationID;
 		this.locationName = locationName;
 		this.locationDescription = locationDescription;
 		this.street = street;
@@ -92,17 +98,12 @@ public class Location {
 		this.country = country;
 		this.locationLatitude = locationLatitude;
 		this.locationLongitude = locationLongitude;
+		this.org = org;
 	}
 
-
-
-
-	// getters and setters
 	public Integer getLocationID() {
 		return locationID;
 	}
-
-
 
 	public void setLocationID(Integer locationID) {
 		this.locationID = locationID;
@@ -164,23 +165,30 @@ public class Location {
 		this.country = country;
 	}
 
-	public String getLocationLatitude() {
+	public Double getLocationLatitude() {
 		return locationLatitude;
 	}
 
-	public void setLocationLatitude(String locationLatitude) {
+	public void setLocationLatitude(Double locationLatitude) {
 		this.locationLatitude = locationLatitude;
 	}
 
-	public String getLocationLongitude() {
+	public Double getLocationLongitude() {
 		return locationLongitude;
 	}
 
-	public void setLocationLongitude(String locationLongitude) {
+	public void setLocationLongitude(Double locationLongitude) {
 		this.locationLongitude = locationLongitude;
 	}
 
-	// hashcode and equals
+	public List<Organization> getOrg() {
+		return org;
+	}
+
+	public void setOrg(List<Organization> org) {
+		this.org = org;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -192,6 +200,7 @@ public class Location {
 		result = prime * result + ((locationLatitude == null) ? 0 : locationLatitude.hashCode());
 		result = prime * result + ((locationLongitude == null) ? 0 : locationLongitude.hashCode());
 		result = prime * result + ((locationName == null) ? 0 : locationName.hashCode());
+		result = prime * result + ((org == null) ? 0 : org.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
 		result = prime * result + ((street == null) ? 0 : street.hashCode());
 		result = prime * result + ((zipcode == null) ? 0 : zipcode.hashCode());
@@ -242,6 +251,11 @@ public class Location {
 				return false;
 		} else if (!locationName.equals(other.locationName))
 			return false;
+		if (org == null) {
+			if (other.org != null)
+				return false;
+		} else if (!org.equals(other.org))
+			return false;
 		if (state == null) {
 			if (other.state != null)
 				return false;
@@ -260,13 +274,11 @@ public class Location {
 		return true;
 	}
 
-	// toString
 	@Override
 	public String toString() {
 		return "Location [locationID=" + locationID + ", locationName=" + locationName + ", locationDescription="
 				+ locationDescription + ", street=" + street + ", city=" + city + ", state=" + state + ", zipcode="
 				+ zipcode + ", country=" + country + ", locationLatitude=" + locationLatitude + ", locationLongitude="
-				+ locationLongitude + "]";
+				+ locationLongitude + ", org=" + org + "]";
 	}
-
 }

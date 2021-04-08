@@ -32,6 +32,7 @@ public class Finding {
 		super();
 		this.findingID = 0;
 		this.locationID = 0;
+		this.findingDate = null;
 		// TODO Auto-generated constructor stub
 	}
 

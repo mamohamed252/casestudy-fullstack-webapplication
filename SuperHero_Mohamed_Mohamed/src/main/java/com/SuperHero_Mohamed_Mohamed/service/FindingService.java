@@ -1,5 +1,6 @@
 package com.SuperHero_Mohamed_Mohamed.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,19 @@ public class FindingService {
 	@Autowired
 	FindingRepository repository;
 
-	public boolean addFinding(Finding finding) {
-		repository.save(finding);
-		return true;
+	public Finding addFinding(Finding finding) {
+		return repository.save(finding);
 	}
 
 	public Finding getFindingByID(int findingID) {
 		return repository.getByFindingID(findingID);
+	}
+	
+	public Finding findAllByFindingDate(Date findingDate) {
+		
+		
+		return repository.findAllByFindingDate(findingDate);
+		
 	}
 
 	public List<Finding> getAllFinding() {

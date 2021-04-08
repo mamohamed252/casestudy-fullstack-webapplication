@@ -52,11 +52,11 @@ public class Hero {
 	@NotBlank(message = "Please choose a status. Either Hero or Villain")
 	@Size(max = 7, message= "Status must be less than 8 characters.")
 	private String heroStatus;
-//	@Column(name = "picture", nullable = false, length= 50)
-//	private String picture;
+	@Column(name = "picture", nullable = false, length= 50)
+	private String picture;
 	
 	
-	@ManyToMany(targetEntity = Organization.class, fetch= FetchType.LAZY)
+	@ManyToMany(targetEntity = Organization.class, fetch= FetchType.EAGER)
 	@JoinTable(name = "hero_org")
 		
 	private List<Organization> organizations = new ArrayList<>();
@@ -65,6 +65,7 @@ public class Hero {
 	public Hero() {
 		super();
 		this.heroID = 0;
+		
 	}
 
 
@@ -73,13 +74,14 @@ public class Hero {
 			@NotBlank(message = "Hero description must not be empty.") @Size(max = 200, message = "Hero description must be less than 200 characters.") String heroDescription,
 			@NotBlank(message = "Superpower must not be empty.") @Size(max = 50, message = "Superpower must be less than 50 characters.") String superPower,
 			@NotBlank(message = "Please choose a status. Either Hero or Villain") @Size(max = 7, message = "Status must be less than 8 characters.") String heroStatus,
-			List<Organization> organizations) {
+			String picture, List<Organization> organizations) {
 		super();
 		this.heroID = heroID;
 		this.heroName = heroName;
 		this.heroDescription = heroDescription;
 		this.superPower = superPower;
 		this.heroStatus = heroStatus;
+		this.picture = picture;
 		this.organizations = organizations;
 	}
 
@@ -134,6 +136,16 @@ public class Hero {
 	}
 
 
+	public String getPicture() {
+		return picture;
+	}
+
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+
 	public List<Organization> getOrganizations() {
 		return organizations;
 	}
@@ -153,6 +165,7 @@ public class Hero {
 		result = prime * result + ((heroName == null) ? 0 : heroName.hashCode());
 		result = prime * result + ((heroStatus == null) ? 0 : heroStatus.hashCode());
 		result = prime * result + ((organizations == null) ? 0 : organizations.hashCode());
+		result = prime * result + ((picture == null) ? 0 : picture.hashCode());
 		result = prime * result + ((superPower == null) ? 0 : superPower.hashCode());
 		return result;
 	}
@@ -192,6 +205,11 @@ public class Hero {
 				return false;
 		} else if (!organizations.equals(other.organizations))
 			return false;
+		if (picture == null) {
+			if (other.picture != null)
+				return false;
+		} else if (!picture.equals(other.picture))
+			return false;
 		if (superPower == null) {
 			if (other.superPower != null)
 				return false;
@@ -204,7 +222,9 @@ public class Hero {
 	@Override
 	public String toString() {
 		return "Hero [heroID=" + heroID + ", heroName=" + heroName + ", heroDescription=" + heroDescription
-				+ ", superPower=" + superPower + ", heroStatus=" + heroStatus + ", organizations=" + organizations
-				+ "]";
+				+ ", superPower=" + superPower + ", heroStatus=" + heroStatus + ", picture=" + picture
+				+ ", organizations=" + organizations + "]";
 	}
+
+
 }
