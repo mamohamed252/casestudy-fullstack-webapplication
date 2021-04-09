@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.SuperHero_Mohamed_Mohamed.entity.ApiMap;
 import com.SuperHero_Mohamed_Mohamed.entity.Finding;
 import com.SuperHero_Mohamed_Mohamed.entity.Hero;
 import com.SuperHero_Mohamed_Mohamed.entity.Location;
@@ -22,7 +24,7 @@ import com.SuperHero_Mohamed_Mohamed.service.HeroService;
 import com.SuperHero_Mohamed_Mohamed.service.LocationService;
 import com.SuperHero_Mohamed_Mohamed.service.OrgService;
 
-@Controller
+@RestController
 public class FindingController {
 	@Autowired
 	private FindingService findingS;
@@ -50,7 +52,7 @@ public class FindingController {
 	}
 	
 
-	@RequestMapping(value="addFindingSubmit", method = RequestMethod.GET)
+	@RequestMapping(value="addFindingSubmit", method = RequestMethod.POST)
 	public ModelAndView addFindingSubmit(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("addFinding");
 		Finding findKey = new Finding();
@@ -64,12 +66,10 @@ public class FindingController {
 			System.out.println("5555555555");
 			e.printStackTrace();
 		}
-	
 		findKey.setHeroID(heroS.getHeroByID(Integer.parseInt(request.getParameter("heroID"))).getHeroID());
 		findKey.setLocationID(locationS.getLocationByID(Integer.parseInt(request.getParameter("locationID"))).getLocationID());
 		findingS.addFinding(findKey);
 		return findingHandeler();
 	}
 	
-
 }

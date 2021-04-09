@@ -60,12 +60,12 @@ public class Location {
 	@Column(name = "locationLatitude", nullable = false, length = 15)
 	@NotBlank(message = "Location Latitude must not be empty.")
 	@Size(max = 15, message= "Location Latitude must be less than 15 characters.")
-	private Double locationLatitude;
+	private String locationLatitude;
 
 	@Column(name = "locationLongitude", nullable = false, length = 15)
 	@NotBlank(message = "Location Longitude must not be empty.")
 	@Size(max = 15, message= "Location Longitude must be less than 15 characters.")
-	private Double locationLongitude;
+	private String locationLongitude;
 
 	@OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
     private List<Organization> org;
@@ -84,8 +84,8 @@ public class Location {
 			@NotBlank(message = "State must not be empty.") @Size(max = 3, message = "State must be less than 3 characters.") String state,
 			@NotBlank(message = "Zipcode must not be empty.") @Size(max = 5, message = "Zipcode must be less than 5 characters.") String zipcode,
 			@NotBlank(message = "Country must not be empty.") @Size(max = 80, message = "Country description must be less than 80 characters.") String country,
-			@NotBlank(message = "Location Latitude must not be empty.") @Size(max = 15, message = "Location Latitude must be less than 15 characters.") Double locationLatitude,
-			@NotBlank(message = "Location Longitude must not be empty.") @Size(max = 15, message = "Location Longitude must be less than 15 characters.") Double locationLongitude,
+			@NotBlank(message = "Location Latitude must not be empty.") @Size(max = 15, message = "Location Latitude must be less than 15 characters.") String locationLatitude,
+			@NotBlank(message = "Location Longitude must not be empty.") @Size(max = 15, message = "Location Longitude must be less than 15 characters.") String locationLongitude,
 			List<Organization> org) {
 		super();
 		this.locationID = locationID;
@@ -165,19 +165,19 @@ public class Location {
 		this.country = country;
 	}
 
-	public Double getLocationLatitude() {
+	public String getLocationLatitude() {
 		return locationLatitude;
 	}
 
-	public void setLocationLatitude(Double locationLatitude) {
+	public void setLocationLatitude(String locationLatitude) {
 		this.locationLatitude = locationLatitude;
 	}
 
-	public Double getLocationLongitude() {
+	public String getLocationLongitude() {
 		return locationLongitude;
 	}
 
-	public void setLocationLongitude(Double locationLongitude) {
+	public void setLocationLongitude(String locationLongitude) {
 		this.locationLongitude = locationLongitude;
 	}
 
@@ -281,4 +281,5 @@ public class Location {
 				+ zipcode + ", country=" + country + ", locationLatitude=" + locationLatitude + ", locationLongitude="
 				+ locationLongitude + ", org=" + org + "]";
 	}
+
 }

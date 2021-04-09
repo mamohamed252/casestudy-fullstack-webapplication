@@ -31,7 +31,7 @@
         </div>
         <div class="col-5" style="background-color:#d3d3d3; border-radius:25px;">
             <h1>Add To Map!</h1>
-            <form action="addFindingSubmit" method="get" style="display:flex; flex-direction:column">
+            <form action="addFindingSubmit" method="post" style="display:flex; flex-direction:column">
                <label for="start">Start date:</label>
                <input type="date" id="start" name="findingDate"
 	      		value="2018-07-22"

@@ -70,9 +70,8 @@ public class HeroController {
 		
 		List<Hero> getAllHeroes = heroS.getAllHeroes();
 		List<Organization> getAllOrg = orgS.getAllOrg();
-		heroS.updateHero(0, null)
-		mav.addObject("orgListBean",getAllOrg);
-		mav.addObject("heroList", getAllHeroes);
+		heroS.updateHero(0, null);
+		
 		return mav; // view file name - contact.jsp
 	}
 
