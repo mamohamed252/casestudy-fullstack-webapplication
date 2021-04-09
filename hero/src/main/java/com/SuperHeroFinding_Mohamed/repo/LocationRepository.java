@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.SuperHeroFinding_Mohamed.entity.Location;
 
 @Repository
-public interface LocationRepository extends JpaRepository<Location, String>{
+public interface LocationRepository extends JpaRepository<Location, Integer>{
 
 	
 	public Location getByLocationID(int locationID);

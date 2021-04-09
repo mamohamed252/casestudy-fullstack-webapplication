@@ -1,4 +1,4 @@
-package com.SuperHeroFinding_Mohamed.hero;
+package com.SuperHeroFinding_Mohamed;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

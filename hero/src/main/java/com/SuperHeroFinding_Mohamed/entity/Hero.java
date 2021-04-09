@@ -3,6 +3,7 @@ package com.SuperHeroFinding_Mohamed.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -56,7 +57,7 @@ public class Hero {
 	private String picture;
 	
 	
-	@ManyToMany(targetEntity = Organization.class, fetch= FetchType.EAGER)
+	@ManyToMany(targetEntity = Organization.class, fetch= FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinTable(name = "hero_org")
 		
 	private List<Organization> organizations = new ArrayList<>();
@@ -84,6 +85,36 @@ public class Hero {
 		this.picture = picture;
 		this.organizations = organizations;
 	}
+	
+	public Hero(Integer heroID,
+			@NotBlank(message = "Hero name must not be empty.") @Size(max = 50, message = "Hero name must be less than 50 characters.") String heroName,
+			@NotBlank(message = "Hero description must not be empty.") @Size(max = 200, message = "Hero description must be less than 200 characters.") String heroDescription,
+			@NotBlank(message = "Superpower must not be empty.") @Size(max = 50, message = "Superpower must be less than 50 characters.") String superPower,
+			@NotBlank(message = "Please choose a status. Either Hero or Villain") @Size(max = 7, message = "Status must be less than 8 characters.") String heroStatus,
+			String picture) {
+		super();
+		this.heroID = heroID;
+		this.heroName = heroName;
+		this.heroDescription = heroDescription;
+		this.superPower = superPower;
+		this.heroStatus = heroStatus;
+		this.picture = picture;
+	}
+	
+	public Hero(
+			@NotBlank(message = "Hero name must not be empty.") @Size(max = 50, message = "Hero name must be less than 50 characters.") String heroName,
+			@NotBlank(message = "Hero description must not be empty.") @Size(max = 200, message = "Hero description must be less than 200 characters.") String heroDescription,
+			@NotBlank(message = "Superpower must not be empty.") @Size(max = 50, message = "Superpower must be less than 50 characters.") String superPower,
+			@NotBlank(message = "Please choose a status. Either Hero or Villain") @Size(max = 7, message = "Status must be less than 8 characters.") String heroStatus,
+			String picture) {
+		super();
+		this.heroName = heroName;
+		this.heroDescription = heroDescription;
+		this.superPower = superPower;
+		this.heroStatus = heroStatus;
+		this.picture = picture;
+	}
+
 
 
 	public Integer getHeroID() {

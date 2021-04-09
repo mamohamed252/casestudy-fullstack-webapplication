@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.SuperHeroFinding_Mohamed.entity.Finding;
 
 @Repository
-public interface FindingRepository extends JpaRepository<Finding, String>{
+public interface FindingRepository extends JpaRepository<Finding, Integer>{
 
 	public Finding getByFindingID(int findingID);
-	public Finding findAllByFindingDate(Date findingDate);
+	public List<Finding> findAllByFindingDate(Date findingDate);
 }

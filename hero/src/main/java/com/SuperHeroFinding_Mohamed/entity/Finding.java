@@ -47,6 +47,13 @@ public class Finding {
 		this.locationName = locationName;
 		this.orgName = orgName;
 	}
+	public Finding( Date findingDate, String heroName, String locationName, String orgName) {
+		super();
+		this.findingDate = findingDate;
+		this.heroName = heroName;
+		this.locationName = locationName;
+		this.orgName = orgName;
+	}
 
 	public int getFindingID() {
 		return findingID;

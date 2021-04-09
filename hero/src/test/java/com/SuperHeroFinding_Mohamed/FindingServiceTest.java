@@ -1,4 +1,4 @@
-package com.SuperHeroFinding_Mohamed.hero;
+package com.SuperHeroFinding_Mohamed;
 //package com.SuperHero_Mohamed_Mohamed.test;
 //
 //import static org.junit.jupiter.api.Assertions.*;

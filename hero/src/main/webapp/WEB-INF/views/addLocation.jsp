@@ -3,7 +3,7 @@
 	<%@include file="navBar.jsp"%>
 	<div class="col-md-auto">
 		<div class="text-center">
-			<img src='/SuperHero_Mohamed_Mohamed/resources/img/addHeroV.jpeg'
+			<img src='<%=request.getContextPath()%>//resources/img/addHeroV.jpeg'
 				class="featurette-image img-fluid mx-auto" alt="resonsive image"
 				width="650px" height="500px" style="padding-top: 5%">
 		</div>

@@ -23,7 +23,7 @@ public class FindingService {
 		return repository.getByFindingID(findingID);
 	}
 
-	public Finding findAllByFindingDate(Date findingDate) {
+	public List<Finding> findAllByFindingDate(Date findingDate) {
 		
 		
 		return repository.findAllByFindingDate(findingDate);

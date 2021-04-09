@@ -1,5 +1,6 @@
 package com.SuperHeroFinding_Mohamed.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +28,8 @@ public class Organization {
 	@Size(max = 200, message= "Organization description must be less than 200 characters.")
 	private String orgDescription;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false, cascade=CascadeType.ALL
+)
 	@JoinColumn(name = "locationID")
 	private Location location;
 
@@ -41,6 +43,20 @@ public class Organization {
 		this.orgID = orgID;
 		this.orgName = orgName;
 		this.orgDescription = orgDescription;
+	}
+	
+	public Organization(String orgName, String orgDescription, Location location) {
+		super();
+		this.orgName = orgName;
+		this.orgDescription = orgDescription;
+		this.location=location;
+	}
+	public Organization(Integer orgID, String orgName, String orgDescription, Location location) {
+		super();
+		this.orgID=orgID;
+		this.orgName = orgName;
+		this.orgDescription = orgDescription;
+		this.location=location;
 	}
 	
 	public Integer getOrgID() {

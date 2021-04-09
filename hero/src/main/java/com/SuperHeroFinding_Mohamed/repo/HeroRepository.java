@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.SuperHeroFinding_Mohamed.entity.Hero;
 
 @Repository
-public interface HeroRepository extends JpaRepository<Hero, String>{
+public interface HeroRepository extends JpaRepository<Hero, Integer>{
 
 	public Hero getByHeroID (int heroID);
 
