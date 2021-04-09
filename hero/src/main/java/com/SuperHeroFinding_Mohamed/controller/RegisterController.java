@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.SuperHeroFinding_Mohamed.entity.Login;
-import com.SuperHeroFinding_Mohamed.service.LoginService;
-
+import com.SuperHeroFinding_Mohamed.entity.User;
+import com.SuperHeroFinding_Mohamed.service.UserService;
 @Controller
 public class RegisterController {
 
 	@Autowired
-	LoginService loginS;
+	UserService userS;
 
 	@RequestMapping("/register")
 	public ModelAndView registerHandler() {
@@ -23,24 +22,10 @@ public class RegisterController {
 		return mav;
 	}
 
-	   @RequestMapping("registerSubmit")
-	    public ModelAndView registerUserHandler(@ModelAttribute Login user, HttpServletRequest request) {
+	   @RequestMapping("signup")
+	    public ModelAndView registerUserHandler(@ModelAttribute User user) {
 	        ModelAndView mav = new ModelAndView("register");
-	        if(user.getPassword().equals(user.getVerifyPassword()) && user.getPassword().length() > 4) {
-	            if(loginS.getUser(user.getUsername()) != null) {
-	                request.setAttribute("usernameMessage", "Username already taken, please use another.");
-	                request.getRequestDispatcher("/register");
-	            } else {
-	            	loginS.addUser(user);
-	                mav.setViewName("login");
-	            }
-	        } else {
-	            request.setAttribute("message", "\"Password\" field must match \"Verify Password\" field. Please try again.");
-	            if(user.getPassword().length() < 7) {
-	                request.setAttribute("passwordMessage", "\"Password\" must be greater than 6 characters.");
-	                request.getRequestDispatcher("/register");
-	            }
-	        }
+	        userS.addNewUser(user);
 			return mav;
 	   }      
 }

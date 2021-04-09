@@ -12,7 +12,7 @@
 				<div class="carousel-inner">
 					<div class="carousel-item active">
 						<div class="parent d-flex justify-content-center">
-							<img src="/SuperHero_Mohamed_Mohamed/resources/img/welcome.jpg"
+							<img src='<%=request.getContextPath()%>/resources/img/welcome.jpg'
 								class="image1">
 							<div class="carousel-caption">
 								<h1 style="color: crimson;">Add Location.</h1>
@@ -32,7 +32,7 @@
 					</div>
 					<div class="carousel-item">
 						<div class="parent d-flex justify-content-center">
-							<img src="/SuperHero_Mohamed_Mohamed/resources/img/locationC.jpg"
+							<img src='<%=request.getContextPath()%>/resources/img/locationC.jpg'
 								class="image2">
 	
 							<div class="carousel-caption">
@@ -53,7 +53,7 @@
 					</div>
 					<div class="carousel-item">
 						<div class="parent d-flex justify-content-center">
-							<img src="/SuperHero_Mohamed_Mohamed/resources/img/mission.jpg"
+							<img src='<%=request.getContextPath()%>/resources/img/mission.jpg'
 								class="image3">
 							<div class="carousel-caption">
 								<h1 style="color: crimson;">Another example headline.</h1>
