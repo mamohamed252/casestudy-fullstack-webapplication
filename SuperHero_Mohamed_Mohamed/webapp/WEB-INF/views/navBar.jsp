@@ -15,7 +15,8 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Select </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="addFinding">Add Findings</a> <a
+						<a class="dropdown-item" href="addFinding">Add Dynamic Map Finding</a>
+						<a class="dropdown-item" href="addFindingStatic">Add Static Findings</a> <a
 							class="dropdown-item" href="addLocation"> Add Location</a> <a
 							class="dropdown-item" href="addOrg">Add Organization</a> <a
 							class="dropdown-item" href="addHero">Add Heroes</a>

@@ -38,6 +38,8 @@ public class HeroService {
 			getHero.setHeroName(hero.getHeroName());
 			getHero.setHeroStatus(hero.getHeroStatus());
 			getHero.setSuperPower(hero.getSuperPower());
+			getHero.setOrganizations(hero.getOrganizations());
+			getHero.setPicture(hero.getPicture());
 			repository.save(getHero);
 			return true;
 		}else {

@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
 Built-By: Mohamed
 Build-Jdk: 15.0.1
-Implementation-Title: SuperHero_Mohamed_Mohamed
-Implementation-Version: 0.0.1-SNAPSHOT
-Implementation-Vendor-Id: SuperHero_Mohamed_Mohamed
-Implementation-URL: http://www.example.com
 Created-By: Maven Integration for Eclipse
 

@@ -22,7 +22,7 @@ public class FindingService {
 	public Finding getFindingByID(int findingID) {
 		return repository.getByFindingID(findingID);
 	}
-	
+
 	public Finding findAllByFindingDate(Date findingDate) {
 		
 		
@@ -39,13 +39,15 @@ public class FindingService {
 
 		if (getFinding != null) {
 
-			getFinding.setFindingDate(getFinding.getFindingDate());
+			getFinding.setFindingDate(finding.getFindingDate());
+			getFinding.setHeroName(finding.getHeroName());
+			getFinding.setLocationName(finding.getLocationName());
+			getFinding.setOrgName(finding.getOrgName());
 			repository.save(getFinding);
 			return true;
 		} else {
 			return false;
 		}
-
 	}
 
 	public boolean deleteFindingByID(int findingID) {

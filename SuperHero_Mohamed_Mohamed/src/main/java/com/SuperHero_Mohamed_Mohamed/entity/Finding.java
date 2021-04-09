@@ -22,26 +22,30 @@ public class Finding {
 	@Column(name = "findingDate", nullable = false)
 	private Date findingDate;
 
-	@Column(name = "heroID", nullable = false)
-	private int heroID;
+	@Column(name = "heroName", nullable = false)
+	private String heroName;
 
-	@Column(name = "locationID", nullable = false)
-	private int locationID;
+	@Column(name = "locationName", nullable = false)
+	private String locationName;
+	
+	@Column(name = "orgName", nullable = false)
+	private String orgName;
 
 	public Finding() {
 		super();
-		this.findingID = 0;
-		this.locationID = 0;
-		this.findingDate = null;
-		// TODO Auto-generated constructor stub
+		this.findingDate=null;
+		this.heroName="";
+		this.locationName="";
+		this.orgName="";
 	}
 
-	public Finding(int findingID, Date findingDate, int heroID, int locationID) {
+	public Finding(int findingID, Date findingDate, String heroName, String locationName, String orgName) {
 		super();
 		this.findingID = findingID;
 		this.findingDate = findingDate;
-		this.heroID = heroID;
-		this.locationID = locationID;
+		this.heroName = heroName;
+		this.locationName = locationName;
+		this.orgName = orgName;
 	}
 
 	public int getFindingID() {
@@ -60,20 +64,28 @@ public class Finding {
 		this.findingDate = findingDate;
 	}
 
-	public int getHeroID() {
-		return heroID;
+	public String getHeroName() {
+		return heroName;
 	}
 
-	public void setHeroID(int heroID) {
-		this.heroID = heroID;
+	public void setHeroName(String heroName) {
+		this.heroName = heroName;
 	}
 
-	public int getLocationID() {
-		return locationID;
+	public String getLocationName() {
+		return locationName;
 	}
 
-	public void setLocationID(int locationID) {
-		this.locationID = locationID;
+	public void setLocationName(String locationName) {
+		this.locationName = locationName;
+	}
+
+	public String getOrgName() {
+		return orgName;
+	}
+
+	public void setOrgName(String orgName) {
+		this.orgName = orgName;
 	}
 
 	@Override
@@ -82,8 +94,9 @@ public class Finding {
 		int result = 1;
 		result = prime * result + ((findingDate == null) ? 0 : findingDate.hashCode());
 		result = prime * result + findingID;
-		result = prime * result + heroID;
-		result = prime * result + locationID;
+		result = prime * result + ((heroName == null) ? 0 : heroName.hashCode());
+		result = prime * result + ((locationName == null) ? 0 : locationName.hashCode());
+		result = prime * result + ((orgName == null) ? 0 : orgName.hashCode());
 		return result;
 	}
 
@@ -103,17 +116,27 @@ public class Finding {
 			return false;
 		if (findingID != other.findingID)
 			return false;
-		if (heroID != other.heroID)
+		if (heroName == null) {
+			if (other.heroName != null)
+				return false;
+		} else if (!heroName.equals(other.heroName))
 			return false;
-		if (locationID != other.locationID)
+		if (locationName == null) {
+			if (other.locationName != null)
+				return false;
+		} else if (!locationName.equals(other.locationName))
+			return false;
+		if (orgName == null) {
+			if (other.orgName != null)
+				return false;
+		} else if (!orgName.equals(other.orgName))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Finding [findingID=" + findingID + ", findingDate=" + findingDate + ", heroID=" + heroID
-				+ ", locationID=" + locationID + "]";
-	}
-
+		return "Finding [findingID=" + findingID + ", findingDate=" + findingDate + ", heroName=" + heroName
+				+ ", locationName=" + locationName + ", orgName=" + orgName + "]";
+	}	
 }

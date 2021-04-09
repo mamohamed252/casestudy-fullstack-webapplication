@@ -31,7 +31,7 @@
         </div>
         <div class="col-5" style="background-color:#d3d3d3; border-radius:25px;">
             <h1>Add To Map!</h1>
-            <form action="addFindingSubmit" method="post" style="display:flex; flex-direction:column">
+            <form action="addFindingSubmit" method="get" style="display:flex; flex-direction:column">
                <label for="start">Start date:</label>
                <input type="date" id="start" name="findingDate"
 	      		value="2018-07-22"
@@ -40,7 +40,7 @@
 	       		
 	       		<label><h3 style="color:black;">Select Hero</h3></label><br><br>
 				<select class="form-control"
-					name="heroID">
+					name="heroName">
 					<c:if test="${heroList.size()>0}">
 					<c:forEach var="hero" items="${heroList}">
 						<option value="${hero.heroID}">${hero.heroName}
@@ -50,7 +50,7 @@
 				</select><br><br>
 				<label><h3 style="color:black;">Select Location</h3></label><br><br>
 				<select class="form-control"
-					name="locationID">
+					name="locationName">
 					<c:if test="${locationList.size()>0}">
 					<c:forEach var="location" items="${locationList}">
 						<option value="${location.locationID}">${location.locationName}
@@ -60,7 +60,7 @@
 				</select><br><br>
 	       		<label><h3 style="color:black;">Select Organization</h3></label><br><br>
 				<select class="form-control"
-					name="orgID">
+					name="orgName">
 					<c:if test="${orgList.size()>0}">
 					<c:forEach var="organization" items="${orgList}">
 						<option value="${organization.orgID}">${organization.orgName}
