@@ -23,6 +23,6 @@
 					</div>
 			</ul>
 		</div>
-		<h1 class="col-7" class="text-center" style="color:white">Hello, ${user.getUsername().toUpperCase()}</h1>
+		<h1 class="col-7" class="text-center" style="color:white">Hello ${user.getUserName().toUpperCase()}</h1>
 	</nav>
 </header>

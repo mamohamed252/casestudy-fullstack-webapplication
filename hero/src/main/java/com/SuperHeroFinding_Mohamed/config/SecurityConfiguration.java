@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
         		//Most restricted to lease
                 .antMatchers("/addFinding","/addFindingStatic",
-                		"/index","/picture_form").hasAnyAuthority("ADMIN", "USER")
+                		"/addHero","/addOrg","/addLocation","/index").hasAnyAuthority("ADMIN", "USER")
                 .antMatchers("/login","/logout","/register").permitAll()
                 .and()
 		        .formLogin().loginPage("/login")

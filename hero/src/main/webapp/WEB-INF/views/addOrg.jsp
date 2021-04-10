@@ -14,7 +14,7 @@
 					<div class="col-6"
 						style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
-						<h1>Add Organization</h1>
+						<h1>Organization</h1>
 						<c:if test="${organization==null}">
 							<form action="addOrg" method="post" modelAttribute="organization"
 								style="display: flex; flex-direction: column">

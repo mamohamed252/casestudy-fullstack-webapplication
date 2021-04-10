@@ -14,7 +14,7 @@
 				<div class="col-6"
 					style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
-					<h1>Add New Superhero or Villain</h1>
+					<h1>Superhero or Villain</h1>
 					<c:if test="${hero==null}">
 						<form action="addHero" method="post"
 							style="display: flex; flex-direction: column">
@@ -26,12 +26,12 @@
 					</c:if>
 					Hero or Villain: <input value="${hero.heroStatus}" type="text"
 						class="form-control" name="heroStatus" placeholder="Name" required /><br>
-					Picture: </label> <select class="form-control" name="picture">
+					Icon: </label> <select class="form-control" name="picture">
 						<option>Blue Hero Icon</option>
 						<option>Red Villain Icon</option>
 					</select><br>Name: <input value="${hero.heroName}" type="text"
 						class="form-control" name="heroName" placeholder="Name" required /><br>
-					<label for="sel1">Organization ID:</label> <select
+					<label for="sel1">Organization Name:</label> <select
 						class="form-control" name="orgID">
 						<c:forEach var="organization" items="${orgListBean}">
 							<option value="${organization.orgID}">${organization.orgName}

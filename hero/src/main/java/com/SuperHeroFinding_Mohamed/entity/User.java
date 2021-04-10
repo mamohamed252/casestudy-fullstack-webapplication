@@ -19,18 +19,29 @@ public class User {
     private int id;
     
     @NotBlank(message="username name cant not be null")
-    @Size(min=4,max=16,message="username cant not be shorter than 4 or longer than 16")
+    @Size(min=4,max=16,message="Username must be greater than 4 characters and less than 16 characters")
     private String userName;
     
-    @Email(message="email format is not correct")
+    @Email(message="Email format is not correct")
     @NotBlank
     private String email;
     
     @NotBlank
-    @Size(min=8,max=26,message="password cant not be  shorter than 8 or longer than 26")
+    @Size(min=8,max=26,message="Password must be greater than 8 characters and less than 26 characters")
     private String password;
     
-    private boolean active;
+    @Transient
+	private String verifyPassword;
+    
+    public String getVerifyPassword() {
+		return verifyPassword;
+	}
+
+	public void setVerifyPassword(String verifyPassword) {
+		this.verifyPassword = verifyPassword;
+	}
+
+	private boolean active;
     
     private String roles;
     
@@ -116,6 +127,7 @@ public class User {
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
+		result = prime * result + ((verifyPassword == null) ? 0 : verifyPassword.hashCode());
 		return result;
 	}
 
@@ -152,13 +164,20 @@ public class User {
 				return false;
 		} else if (!userName.equals(other.userName))
 			return false;
+		if (verifyPassword == null) {
+			if (other.verifyPassword != null)
+				return false;
+		} else if (!verifyPassword.equals(other.verifyPassword))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", password=" + password + ", active="
-				+ active + ", roles=" + roles + "]";
+		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", password=" + password
+				+ ", verifyPassword=" + verifyPassword + ", active=" + active + ", roles=" + roles + "]";
 	}
+
+	
 
 }

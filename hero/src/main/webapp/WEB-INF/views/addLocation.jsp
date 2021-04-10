@@ -13,7 +13,7 @@
 				<div class="col-6"
 					style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
-					<h1>Add Location</h1>
+					<h1>Location</h1>
 					<c:if test="${location==null}">
 						<form action="addLocation" method="post"
 							style="display: flex; flex-direction: column">
@@ -45,7 +45,7 @@
 						required /><br> Longitude : <input
 						value="${location.locationLongitude}" type="tel"
 						class="form-control" name=locationLongitude
-						placeholder="Longitude" required /><br> <input
+						placeholder="Longitude" required /><br><a href="https://www.gps-coordinates.net/"><h1> Need Help Finding Coordinates? </h1></a><br> <input
 						class="col-md-offset-2 col-md-2" type="submit" name="cancel"
 						value="Cancel" style="width: 50%"><br> <input
 						class="col-md-offset-2 col-md-2" type="submit" name="create"
