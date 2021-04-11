@@ -1,4 +1,3 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top  bg-dark">
 		<a class="navbar-brand" href="index">Superhero Finder 101</a>
@@ -24,6 +23,6 @@
 					</div>
 			</ul>
 		</div>
-		<h1 class="col-7" class="text-center" style="color:white">Hello <c:out value="${pageContext.request.remoteUser}"/></h1>
+		<h1 class="col-7" class="text-center" style="color:white">Hello ${user.getUserName().toUpperCase()}</h1>
 	</nav>
 </header>
