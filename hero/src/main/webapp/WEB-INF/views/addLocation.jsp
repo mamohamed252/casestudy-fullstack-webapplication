@@ -107,5 +107,6 @@
 					</form>
 				</div>
 			</div>
+				<a class="btn btn-lg btn-primary" href="addOrg" role="button">Add Organization</a>
 		</div>
 		<%@include file="footer.jsp"%>

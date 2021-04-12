@@ -37,28 +37,26 @@ class TestFindingService {
 
 	@BeforeEach
 	void setUp() throws Exception{
-		testFinding =  new Finding(Date.valueOf("2000-10-05"), "heroNameTest", "locationName", "orgName");
-		findingS.addFinding(testFinding);
-		testFindingUpdate =  new Finding(Date.valueOf("2000-10-05"), "heroNameUpdate", "locationName", "orgName");
-		findingS.addFinding(testFindingUpdate);
 		
 	}
 	@Test
 	@Transactional
 	void testAddFinding() {
-		Assertions.assertTrue(findingS.addFinding(testFinding)!=null);
+		Finding addFindingTest = new Finding(1, Date.valueOf("2000-10-05"), "heroName", "location", "orgName");
+		Assertions.assertTrue(findingS.addFinding(addFindingTest)!=null);
 	}
 
 	@Test
 	@Transactional
 	void testGetFindingByID() {
-		Finding foundByID = findingS.getFindingByID(47);
+		Finding foundByID = findingS.getFindingByID(89);
 		Integer testGotID = foundByID.getFindingID();
 
-		assertEquals(47, testGotID);
+		assertEquals(89, testGotID);
 	}
 
 	@Test
+	@Transactional
 	void testFindAllByFindingDate() {
 		assertNotNull(findingS.findAllByFindingDate(Date.valueOf("2000-10-05")));
 	}
@@ -73,14 +71,14 @@ class TestFindingService {
 	@Test
 	@Transactional
 	void testUpdateFinding() {
-		boolean updateTest = findingS.updateFinding(53, testFindingUpdate);
-		assertTrue(updateTest);
+		Finding updateFindingTest = new Finding(89, Date.valueOf("2000-10-05"), "heroName", "location", "orgName");
+		Assertions.assertTrue(findingS.updateFinding(89, updateFindingTest));
 	}
 
 	@Test
 	@Transactional
 	void testDeleteFindingByID() {
-		boolean deleteFinding = findingS.deleteFindingByID(62);
+		boolean deleteFinding = findingS.deleteFindingByID(89);
 		assertTrue(deleteFinding);
 	}
 

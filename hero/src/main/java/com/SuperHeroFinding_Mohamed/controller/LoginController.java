@@ -28,4 +28,10 @@ public class LoginController {
 		return mav;
 	}
 	
+	@RequestMapping("/thankyou")
+	public ModelAndView successHandler1() {
+		ModelAndView mav = new ModelAndView("thankyou");
+		return mav;
+	}
+	
 }

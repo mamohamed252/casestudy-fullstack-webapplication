@@ -51,29 +51,29 @@ public class FindingController {
 		return mav; // view file name - contact.jsp
 	}
 	
-	
-	//Dynamic Api Map Finding
-	@RequestMapping(value="addFindingSubmit", method = RequestMethod.GET)
-	public ModelAndView addFindingSubmit(HttpServletRequest request) {
-		ModelAndView mav = new ModelAndView("addFinding");
-		Finding findKey = new Finding();
-		Date date1;
-		System.out.println(request.getParameter("findingDate"));
-		try {
-			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("findingDate"));
-			findKey.setFindingDate(date1);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			System.out.println("5555555555");
-			e.printStackTrace();
-		}
-	
-		findKey.setHeroName(request.getParameter("heroName"));
-		findKey.setLocationName(request.getParameter("locationName"));
-		//findKey.setLocationID(locationS.getLocationByID(Integer.parseInt(request.getParameter("locationID"))).getLocationID());
-		findingS.addFinding(findKey);
-		return findingHandeler();
-	}
+//	
+//	//Dynamic Api Map Finding
+//	@RequestMapping(value="addFindingSubmit", method = RequestMethod.GET)
+//	public ModelAndView addFindingSubmit(HttpServletRequest request) {
+//		ModelAndView mav = new ModelAndView("addFinding");
+//		Finding findKey = new Finding();
+//		Date date1;
+//		System.out.println(request.getParameter("findingDate"));
+//		try {
+//			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("findingDate"));
+//			findKey.setFindingDate(date1);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			System.out.println("5555555555");
+//			e.printStackTrace();
+//		}
+//	
+//		findKey.setHeroName(request.getParameter("heroName"));
+//		findKey.setLocationName(request.getParameter("locationName"));
+//		//findKey.setLocationID(locationS.getLocationByID(Integer.parseInt(request.getParameter("locationID"))).getLocationID());
+//		findingS.addFinding(findKey);
+//		return findingHandeler();
+//	}
 
 	// Static Finding
 	@RequestMapping("/addFindingStatic") // "/contactUs" -> this is the href value

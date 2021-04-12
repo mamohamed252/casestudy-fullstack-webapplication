@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.SuperHeroFinding_Mohamed.entity.Hero;
 import com.SuperHeroFinding_Mohamed.repo.HeroRepository;
@@ -29,6 +30,7 @@ class TestHeroService {
 	}
 
 	@Test
+	@Transactional
 	void testAddHero() {
 		Hero addHero = new Hero("TestName", "testDesc", "TestPower", "Hero", "TestPicture");
 		Hero getHeroID = new Hero("TestNameID", "testDesc", "TestPower", "Hero", "TestPicture");
@@ -39,6 +41,7 @@ class TestHeroService {
 	}
 
 	@Test
+	@Transactional
 	void testGetHeroByID() {
 		Hero getHero = new Hero(9,"TestNameID", "testDesc", "TestPower", "Hero", "TestPicture");
 		
@@ -46,22 +49,23 @@ class TestHeroService {
 	}
 
 	@Test
+	@Transactional
 	void testGetAllHeroes() {
-		
-		
 		Assertions.assertFalse(heroS.getAllHeroes().isEmpty());
 	}
 
 	@Test
+	@Transactional
 	void testUpdateHero() {
-		Hero updateHero = new Hero(10,"TestNameUpdate", "testDesc", "TestPower", "Hero", "TestPicture");
+		Hero updateHero = new Hero(9,"TestNameUpdate", "testDesc", "TestPower", "Hero", "TestPicture");
 		
-		Assertions.assertTrue(heroS.updateHero(10, updateHero));
+		Assertions.assertTrue(heroS.updateHero(9, updateHero));
 	}
 
-//	@Test
-//	void testDeleteHeroByID() {
-//		Assertions.assertTrue(heroS.deleteHeroByID(8));
-//	}
+	@Test
+	@Transactional
+	void testDeleteHeroByID() {
+		Assertions.assertTrue(heroS.deleteHeroByID(9));
+	}
 
 }

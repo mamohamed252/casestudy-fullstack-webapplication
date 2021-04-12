@@ -1,6 +1,9 @@
 <%@include file="headCom.jsp"%>
 <body>
 	<%@include file="navBar.jsp"%>
+	
+	
+		<div class="container" style="padding-top:10%">
 		<main>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<ul class="carousel-indicators">
@@ -15,18 +18,10 @@
 							<img src='<%=request.getContextPath()%>/resources/img/welcome.jpg'
 								class="image1">
 							<div class="carousel-caption">
-								<h1 style="color: crimson;">Add Location.</h1>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam.</p>
-								<p>
-								<p></p>
-								Donec id elit non mi porta gravida at eget metus.
-								</p>
-								<p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-										more</a>
-								</p>
+							<p class="text-center">Welcome to SuperHero Finding 101</p>
+								<p class="text-center">SuperHeroes and SuperVillains are all around us!</p>
+								<p class="text-center">Keep track of your favorite heroes around the world!</p>
+							
 							</div>
 						</div>
 					</div>
@@ -36,17 +31,11 @@
 								class="image2">
 	
 							<div class="carousel-caption">
-								<h1 style="color: crimson;">Another example headline.</h1>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam.</p>
-								<p>
-								<p></p>
-								Donec id elit non mi porta gravida at eget metus.
-								</p>
-								<p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-										more</a>
+								
+								<p class="text-center">Want to view all Superheroes found on a map?</p><br>
+								
+									<a class="btn btn-lg btn-primary" href="addFinding" role="button">Dynamic Map</a>
+									<a class="btn btn-lg btn-primary" href="addFindingStatic" role="button">Static Map</a>
 								</p>
 							</div>
 						</div>
@@ -56,17 +45,12 @@
 							<img src='<%=request.getContextPath()%>/resources/img/mission.jpg'
 								class="image3">
 							<div class="carousel-caption">
-								<h1 style="color: crimson;">Another example headline.</h1>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget
-									quam.</p>
+								<p>Contribute to SuperHero Finding 101 </p>
 								<p>
-								<p></p>
-								Donec id elit non mi porta gravida at eget metus.
-								</p>
-								<p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-								<p>
-									<a class="btn btn-lg btn-primary" href="#" role="button">Learn
-										more</a>
+								<a class="btn btn-lg btn-primary" href="addLocation" role="button">Add Location</a>
+								<a class="btn btn-lg btn-primary" href="addOrg" role="button">Add Organization</a>
+								<a class="btn btn-lg btn-primary" href="addHero" role="button">Add Hero</a>
+								
 								</p>
 							</div>
 						</div>
@@ -81,4 +65,7 @@
 				</a>
 			</div>
 		</main>
+		
+		</div>
+		
 <%@include file="footer.jsp"%>

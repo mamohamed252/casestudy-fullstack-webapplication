@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.SuperHeroFinding_Mohamed.entity.Organization;
 import com.SuperHeroFinding_Mohamed.repo.OrgRepository;
@@ -13,20 +14,20 @@ public class OrgService {
 
 	@Autowired
 	OrgRepository repository;
-
+	@Transactional
 	public Organization addOrg(Organization org) {
 		return repository.save(org);
 		 
 	}
-	
+	@Transactional
 	public Organization getOrgByID(int orgID) {
 		return repository.getByOrgID(orgID);
 	}
-	
+	@Transactional
 	public List<Organization> getAllOrg(){
 		return repository.findAll();
 	}
-	
+	@Transactional
 	public boolean updateOrg(int orgID, Organization org) {
 	
 		Organization updateOrg = repository.getByOrgID(orgID);
@@ -40,7 +41,7 @@ public class OrgService {
 			return false;
 		}
 	}
-	
+	@Transactional
 	public boolean deleteOrgByID(int orgID) {
 		Organization deleteSearch = repository.getByOrgID(orgID);
 		if (deleteSearch != null) {

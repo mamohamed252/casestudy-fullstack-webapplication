@@ -1,3 +1,4 @@
+
 <%@include file="headCom.jsp"%>
 <body>
   <div class="container" style="padding-top:10%">

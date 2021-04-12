@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.SuperHeroFinding_Mohamed.entity.Hero;
 import com.SuperHeroFinding_Mohamed.repo.HeroRepository;
@@ -15,21 +16,25 @@ public class HeroService {
 	@Autowired
 	HeroRepository repository;
 
+	@Transactional
 	public Hero addHero(Hero hero) {
 		return repository.save(hero);
 		
 	}
-
+	
+	@Transactional
 	public Hero getHeroByID(int heroID) {
 
 		return repository.getByHeroID(heroID);
 	}
 
+	@Transactional
 	public List<Hero> getAllHeroes() {
 
 		return repository.findAll();
 	}
 
+	@Transactional
 	public boolean updateHero(int heroID, Hero hero) {
 		Hero getHero = repository.getByHeroID(heroID);
 
@@ -47,6 +52,7 @@ public class HeroService {
 		}
 	}
 
+	@Transactional
 	public boolean deleteHeroByID(int heroID) {
 		Hero deleteSearch = repository.getByHeroID(heroID);
 		if (deleteSearch != null) {

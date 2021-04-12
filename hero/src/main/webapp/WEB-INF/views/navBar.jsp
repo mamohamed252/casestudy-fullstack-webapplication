@@ -1,4 +1,4 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <header>
 	<nav class="navbar navbar-expand-lg navbar-dark fixed-top  bg-dark">
 		<a class="navbar-brand" href="index">Superhero Finder 101</a>
@@ -16,14 +16,20 @@
 					role="button" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> Select </a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="addFinding">Add Dynamic Map Finding</a>
-						<a class="dropdown-item" href="addFindingStatic">Add Static Findings</a> <a
-							class="dropdown-item" href="addLocation"> Add Location</a> <a
-							class="dropdown-item" href="addOrg">Add Organization</a> <a
-							class="dropdown-item" href="addHero">Add Heroes</a>
+						<a class="dropdown-item" href="login">Sign Up</a> <a
+							class="dropdown-item" href="thankyou">Sign Out</a> <a
+							class="dropdown-item" href="addFinding">Add Dynamic Map
+							Finding</a> <a class="dropdown-item" href="addFindingStatic">Add
+							Static Findings</a> <a class="dropdown-item" href="addLocation">
+							Add Location</a> <a class="dropdown-item" href="addOrg">Add
+							Organization</a> <a class="dropdown-item" href="addHero">Add
+							Heroes</a>
 					</div>
 			</ul>
 		</div>
-		<h1 class="col-7" class="text-center" style="color:white">Hello <c:out value="${pageContext.request.remoteUser}"/></h1>
+		<h1 class="col-7" class="text-center" style="color: white">
+			Hello
+			<c:out value="${pageContext.request.remoteUser}" />
+		</h1>
 	</nav>
 </header>

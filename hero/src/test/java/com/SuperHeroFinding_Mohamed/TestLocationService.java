@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.SuperHeroFinding_Mohamed.entity.Location;
 import com.SuperHeroFinding_Mohamed.repo.LocationRepository;
@@ -30,47 +31,49 @@ class TestLocationService {
 	}
 	@BeforeEach
 	void setUpBefore() throws Exception {
-		//Location testDummy = locationS.addLocation(new Location("Micro Center", "Computer Store", "3710 Highway 100 South", "St Louis Park", "MN", "55416", "USA", "44.936109", "93.3457114"));
-	
 	}
 
 	@AfterAll
 	static void tearDownAfterClass() throws Exception {
 	}
 
-//	@Test
-//	void testAddLocation() {
-//	Location addLocationTest = new Location("Micro Center", "Computer Store", "3710 Highway 100 South", "St Louis Park", "MN", "55416", "USA", "44.936109", "93.3457114");
-//	Location addedTest = locationS.addLocation(addLocationTest);
-//		assertTrue(addLocationTest, addedTest);
-//		
-//
-//	}
-//
-//	@Test
-//	void testGetLocationByID() {
-//	Location foundByID = locationS.getLocationByID(25);
-//		Integer testGotID = foundByID.getLocationID();
-//		
-//		assertEquals(25, testGotID);
-//	}
-//
-//	@Test
-//	void testGetAllLocation() {
-//		List<Location> checkListFinding = locationS.getAllLocation();
-//		assertFalse(checkListFinding.isEmpty());
-//	}
-//
-//	@Test
-//	void testUpdateLocation() {
-//	Location addLocationTest = new Location(31,"Micro Center", "Computer Store", "3710 Highway 100 South", "St Louis Park", "MN", "55416", "USA", "44.936109", "93.3457114");
-//	Assertions.assertTrue(locationS.updateLocation(31, addLocationTest));
-//	}
+	@Test
+	@Transactional
+	void testAddLocation() {
+	Location addLocationTest = new Location(5,"Micro Center", "Computer Store", "3710 Highway 100 South", "St Louis Park", "MN", "55416", "USA", "44.936109", "93.3457114");
+	Assertions.assertFalse(locationS.addLocation(addLocationTest)==null);
+		
 
-//	@Test
-//	void testDeleteLocationByID() {
-//		boolean deleteLocationbyID = locationS.deleteLocationByID(30);
-//		assertTrue(deleteLocationbyID);
-//	}
+	}
+
+	@Test
+	@Transactional
+	void testGetLocationByID() {
+	Location foundByID = locationS.getLocationByID(26);
+		Integer testGotID = foundByID.getLocationID();
+		
+		assertEquals(26, testGotID);
+	}
+
+	@Test
+	@Transactional
+	void testGetAllLocation() {
+		List<Location> checkListFinding = locationS.getAllLocation();
+		assertFalse(checkListFinding.isEmpty());
+	}
+
+	@Test
+	@Transactional
+	void testUpdateLocation() {
+	Location addLocationTest = new Location(26,"Micro Center", "Computer Store", "3710 Highway 100 South", "St Louis Park", "MN", "55416", "USA", "44.936109", "93.3457114");
+	Assertions.assertTrue(locationS.updateLocation(26, addLocationTest));
+	}
+
+	@Test
+	@Transactional
+	void testDeleteLocationByID() {
+		boolean deleteLocationbyID = locationS.deleteLocationByID(26);
+		assertTrue(deleteLocationbyID);
+	}
 
 }

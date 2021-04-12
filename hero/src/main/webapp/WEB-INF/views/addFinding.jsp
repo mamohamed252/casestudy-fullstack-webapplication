@@ -93,13 +93,13 @@
 	
 	      //add locations
 	      var locations = [
-	        ['Superwoman', 37.7749295, -122.4194155, '/hero/resources/dbHeroPictures/hero_22x40.png'],
-	        ['Spiderman', 37.8590937, -122.4852507, '/hero/resources/dbHeroPictures/hero_22x40.png'],
-	        ['Jet', 38.5815719, -121.4943996, '/hero/resources/dbHeroPictures/evil_22x40.png'],
+	        ['Superwoman', 51.173041, 115.5749379, '/hero/resources/dbHeroPictures/hero_22x40.png'],
+	        ['Spiderman', 57.466667, -153.433334, '/hero/resources/dbHeroPictures/hero_22x40.png'],
+	        ['Jet', 25.700001, -171.733337, '/hero/resources/dbHeroPictures/evil_22x40.png'],
 	        ['Viper', 36.424687, -121.3263187, '/hero/resources/dbHeroPictures/evil_22x40.png'],
 	        ['Sage', 40.4923784, -121.8891586, '/hero/resources/dbHeroPictures/hero_22x40.png'],
 	        ['Batman', 44.301416, -93.248651, '/hero/resources/dbHeroPictures/hero_22x40.png'],
-	        ['Sonic', 34.1340991, -118.321652, '/hero/resources/dbHeroPictures/evil_22x40.png','BatMan',]
+	        ['Sonic', 34.1340991, -118.321652, '/hero/resources/dbHeroPictures/evil_22x40.png']
 	        ];
 	
 	      //declare marker call it 'i'
