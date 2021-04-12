@@ -1,10 +1,11 @@
+  
 <%@include file="headCom.jsp"%>
 <body>
 	<%@include file="navBar.jsp"%>
 	<main role="main">
 		<div class="col-md-auto">
 			<div class="text-center">
-				<img src='/SuperHero_Mohamed_Mohamed/resources/img/addHeroV.jpeg'
+				<img src='<%=request.getContextPath()%>/resources/img/addHeroV.jpeg'
 					class="featurette-image img-fluid mx-auto" alt="resonsive image"
 					width="650px" height="500px" style="padding-top: 5%">
 			</div>
@@ -58,24 +59,24 @@
 								</tr>
 								<tbody id="addLocationRows">
 									<c:if test="${!orgList.isEmpty()}">
-										<c:forEach var="i" begin="0" end="${orgList.size() - 1}">
-											<c:set var="decr" value="${orgList.size() - i - 1}" />
+										<c:forEach items="${orgList}" var="org">
+											
 
 											<tr>
 
 												<td width="20%"><c:out
-														value="${orgList.get(decr).getOrgID()}"></c:out></td>
+														value="${org.getOrgID()}"></c:out></td>
 												<td width="20%"><c:out
-														value="${orgList.get(decr).getOrgName()}"></c:out></td>
+														value="${org.getOrgName()}"></c:out></td>
 												<td width="20%"><c:out
-														value="${orgList.get(decr).getOrgDescription()}"></c:out></td>
+														value="${org.getOrgDescription()}"></c:out></td>
 												<td width="20%"><c:out
-														value="${orgList.get(decr).getLocation().getLocationName()}"></c:out></td>
+														value="${org.getLocation().getLocationName()}"></c:out></td>
 												<td><a style="color: black; text-decoration: none;"
-													href="${request.getContextPath()}editOrganization${orgList.get(decr).getOrgID()}"><i
+													href="${request.getContextPath()}editOrganization${org.getOrgID()}"><i
 														class="fa fa-pencil"></i> Edit</a></td>
 												<td><a style="color: black; text-decoration: none;"
-													href="${request.getContextPath()}deleteOrganization${orgList.get(decr).getOrgID()}"><i
+													href="${request.getContextPath()}deleteOrganization${org.getOrgID()}"><i
 														class="fa fa-pencil"></i> Delete</a></td>
 											</tr>
 										</c:forEach>
