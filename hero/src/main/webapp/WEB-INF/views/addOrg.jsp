@@ -35,10 +35,10 @@
 							placeholder="Name" required="true" /><br> Organization
 						Description : <input value="${organization.orgDescription}"
 							type="text" class="form-control"
-							name="orgDescription" placeholder="Location Description"
+							name="orgDescription" placeholder="Organization Description"
 							required="true" /> <br>
 
-						<select value="${organization.locationID}" name="locationID">
+						<select name="locationID">
 							<c:forEach items="${locationList}" var="location">
 								<option value="${location.locationID }">${location.locationName }
 								</option>

@@ -72,17 +72,19 @@ public class OrgController {
 		return mav;
 	}
 
-	@RequestMapping(value = "/deleteOrganization{orgID}", method = RequestMethod.GET)
-	public ModelAndView deleteHandelerSubmit(@PathVariable("orgID") Integer orgID) {
+	@RequestMapping(value = "/deleteOrganization{OrgID}", method = RequestMethod.GET)
+	public ModelAndView deleteHandelerSubmit(@PathVariable("OrgID") Integer orgID) {
 		ModelAndView mav = new ModelAndView("redirect:/addOrg");
 		orgS.deleteOrgByID(orgID);
 		return mav; // view file name - contact.jsp
 	}
 
-	@RequestMapping(value = "/editOrganization{HeroID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/editOrganization{OrgID}", method = RequestMethod.GET)
 	public ModelAndView showEditInfoHandelerSubmit(@PathVariable("OrgID") Integer orgID) {
 		ModelAndView mav = new ModelAndView("addOrg");
 		List<Organization> getAllOrg = orgS.getAllOrg();
+		List<Location> allLocationList = locationS.getAllLocation();
+		mav.addObject("locationList", allLocationList);
 		Organization getOrg = orgS.getOrgByID(orgID);
 		mav.addObject("organization", getOrg);
 		return mav; // view file name - contact.jsp
