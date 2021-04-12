@@ -4,7 +4,7 @@
 	<main role="main">
 		<div class="col-md-auto">
 			<div class="text-center">
-				<img src='<%=request.getContextPath()%>/resources/img/addHeroV.jpeg'
+				<img src='/SuperHero_Mohamed_Mohamed/resources/img/addHeroV.jpeg'
 					class="featurette-image img-fluid mx-auto" alt="resonsive image"
 					width="650px" height="500px" style="padding-top: 5%">
 			</div>
@@ -14,7 +14,7 @@
 					<div class="col-6"
 						style="background: linear-gradient(to right, rgba(185, 48, 24, 0.74), rgb(22, 116, 170);">
 
-						<h1>Organization</h1>
+						<h1>Add Organization</h1>
 						<c:if test="${organization==null}">
 							<form action="addOrg" method="post" modelAttribute="organization"
 								style="display: flex; flex-direction: column">
@@ -59,21 +59,23 @@
 								<tbody id="addLocationRows">
 									<c:if test="${!orgList.isEmpty()}">
 										<c:forEach var="i" begin="0" end="${orgList.size() - 1}">
+											<c:set var="decr" value="${orgList.size() - i - 1}" />
+
 											<tr>
 
 												<td width="20%"><c:out
-														value="${orgList.get(i).getOrgID()}"></c:out></td>
+														value="${orgList.get(decr).getOrgID()}"></c:out></td>
 												<td width="20%"><c:out
-														value="${orgList.get(i).getOrgName()}"></c:out></td>
+														value="${orgList.get(decr).getOrgName()}"></c:out></td>
 												<td width="20%"><c:out
-														value="${orgList.get(i).getOrgDescription()}"></c:out></td>
+														value="${orgList.get(decr).getOrgDescription()}"></c:out></td>
 												<td width="20%"><c:out
-														value="${orgList.get(i).getLocation().getLocationName()}"></c:out></td>
+														value="${orgList.get(decr).getLocation().getLocationName()}"></c:out></td>
 												<td><a style="color: black; text-decoration: none;"
-													href="${request.getContextPath()}editOrganization${orgList.get(i).getOrgID()}"><i
+													href="${request.getContextPath()}editOrganization${orgList.get(decr).getOrgID()}"><i
 														class="fa fa-pencil"></i> Edit</a></td>
 												<td><a style="color: black; text-decoration: none;"
-													href="${request.getContextPath()}deleteOrganization${orgList.get(i).getOrgID()}"><i
+													href="${request.getContextPath()}deleteOrganization${orgList.get(decr).getOrgID()}"><i
 														class="fa fa-pencil"></i> Delete</a></td>
 											</tr>
 										</c:forEach>
@@ -81,6 +83,5 @@
 								</tbody>
 							</table>
 						</c:if>
-						<a class="btn btn-lg btn-primary" href="addHero" role="button">Add Hero</a>
 					</div>
 					<%@include file="footer.jsp"%>

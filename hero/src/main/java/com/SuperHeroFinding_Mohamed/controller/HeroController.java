@@ -56,12 +56,7 @@ public class HeroController {
 	@RequestMapping(value = "addHero", method = RequestMethod.POST)
 	public ModelAndView createHeroHandler(@ModelAttribute Hero createKey, @ModelAttribute("orgID") Organization orgID) {
 		ModelAndView mav = new ModelAndView("redirect:/addHero");
-		System.out.println("11111111111111" + createKey);
-		System.out.println("2222222222" + orgID);
 		List<Hero> getAllHeroes = heroS.getAllHeroes();
-
-		// List<Organization> orgList = new ArrayList<Organization>();
-		// addHero.setOrganizations(orgList);
 		createKey.getOrganizations().add(orgS.getOrgByID(orgID.getOrgID()));
 		heroS.addHero(createKey);
 		mav.addObject("heroList", getAllHeroes);
